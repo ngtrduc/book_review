@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "paperclip", "~> 5.0.0"
 gem "omniauth-facebook"
 gem "devise"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
