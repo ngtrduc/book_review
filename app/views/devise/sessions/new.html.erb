@@ -6,7 +6,8 @@
             <div class="col-sm-6 col-sm-offset-3 well">
               <div class="form-top">
                 <h1>Login</h1>
-                <button class="btn-primary form-control"><b>facebook</b></button>
+                <%= button_to "Facebook", user_facebook_omniauth_authorize_path,
+                  class: "btn-primary form-control" %>
                 <h4>--------------------------------OR----------------------------------</h4>
               </div>
             <div class="form-bottom">
