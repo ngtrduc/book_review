@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem "adminlte-rails"
 gem "paperclip", "~> 5.0.0"
 gem "omniauth-facebook"
 gem "devise"
