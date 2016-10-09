@@ -1,13 +1,11 @@
-<footer class="footer">
-  <small>
-    The <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    by <a href="http://www.michaelhartl.com/">Michael Hartl</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About", static_pages_about_path %></li>
-      <li><%= link_to "Contact", static_pages_contact_path %></li>
-      <li><a href="http://news.railstutorial.org/">News</a></li>
-    </ul>
-  </nav>
+<footer class="footer site-footer">
+  <div class="row well">
+    <div class="col-sm-5 col-sm-offset-2">
+      <ul class="list-inline">
+        <li><%= link_to "home", root_path %></li>
+        <li><%= link_to "help", static_pages_help_path %></li>
+        <li><%= link_to "about", static_pages_about_path %></li>
+      </ul>
+    </div>
+  </div>
 </footer>
