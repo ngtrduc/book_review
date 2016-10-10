@@ -1,8 +1,12 @@
-<% provide(:title, "Home") %>
-<h1>Sample App</h1>
-<p>
-  <%= current_user.name if current_user %>
-  This is the home page for the
-  <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<div class="panel panel-heading">
+   <center>
+     <h1><%= t "views.static_pages.home1" %></h1>
+   </center>
+   </div>
+   <div class="panel-body">
+   <center>
+     <h2><%= t "views.static_pages.home.team HSP" %></h2>
+     <br/>
+     <%= link_to t("views.static_pages.sign up"), signup_path, class: "btn btn-lg btn-primary" %>
+   </center>
+ </div>
