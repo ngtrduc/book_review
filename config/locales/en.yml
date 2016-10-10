@@ -1,6 +1,6 @@
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
+# than English, add the necubessary files in this directory.
 #
 # To use the locales, use `I18n.t`:
 #
@@ -21,3 +21,80 @@
 
 en:
   hello: "Hello world"
+  users:
+    create:
+      succee: "Welcome to the Book Framgia app!"
+    update:
+      succee: "Your profile updated!"
+    login:
+      danger: "Please log in!"
+  activerecord:
+    model:
+      category: "category"
+  views:
+    users:
+      new:
+        signup: "Signup"
+        form:
+          confir: "Confirmation"
+          submit: "Create my account"
+      edit:
+        title: "Edit my profile"
+        h2: "Update your profile"
+        save: "Save change"
+      avatar:
+        size: "should be less than 5MB"
+        bigsize: "Maximum file size is 5MB. Please choose a smaller file"
+    shared:
+      error:
+        message: "The form contains"
+        name: "error"
+    static_pages:
+      contact: "This is contact"
+      help: "This is help"
+      home1: "Framgia Books Review System"
+      home:
+      signup: "Sign up"
+    layouts:
+      application:
+      linkhome: "Home"
+      linklogin: "Login"
+    session:
+      new:
+        login: "Log in"
+        newuser: "New user?"
+        signupnow: "Sign up now!"
+        danger: "Invalid email/password combination. Please log in again!"
+        remember: "Remember me on this computer"
+    admin:
+      book:
+        index:
+          dashboard: "DashBoard"
+          newbook: "New book"
+        new:
+          createnewbook: "Create new boook"
+          category: "Category"
+  controllers:
+    admin:
+      login:
+        flash:
+          danger: "Please login as admin"
+      books:
+        create:
+          flash:
+            success: "New book is added"
+    session:
+      flash:
+        success: "Wellcome back"
+        danger: "Wrong email or password"
+  app:
+    bookapp: "Book app"
+    home: "Home"
+    help: "Help"
+    profile: "Profile"
+    set: "Setting"
+    login: "Log in"
+    logout: "Log out"
+    user: "Users"
+    account: "Account"
+    logged_in: "Please log in."
