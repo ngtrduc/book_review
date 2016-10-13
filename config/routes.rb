@@ -23,10 +23,13 @@ Rails.application.routes.draw do
   end
   resources :books
   resources :users, except: [:new, :destroy, :create]
-  resources :marks, only: [:create, :destroy, :new]
+  resources :marks, only: [:new, :create, :destroy]
+  resources :favorites, only: [:new, :create, :destroy]
   resources :users, only: [:index, :edit, :update]
   resources :requests, except: [:edit, :update]
   resources :reviews, except: [:show, :new, :index]
   resources :relationships, only: [:create, :destroy]
   resources :comments, only: [:create]
+  resources :activities, only: [:index, :create]
+  resources :likes, only: [:create, :destroy]
 end

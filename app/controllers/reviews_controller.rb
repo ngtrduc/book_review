@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
     @new_review = current_user.reviews.build review_params
     if @new_review.save
       flash[:success] = t "reviews.messages.create_success"
+      SendEmailWorkerReview.perform_async @new_review.id
     else
       flash[:warning] = t "reviews.messages.create_fail"
     end

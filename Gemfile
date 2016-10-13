@@ -8,6 +8,7 @@ gem "uglifier",     "2.5.3"
 gem "carrierwave"
 gem "kaminari"
 gem "cancancan"
+gem "sidekiq"
 gem "devise"
 gem "coffee-rails", "4.1.0"
 gem "jquery-rails", "4.0.3"
@@ -17,6 +18,7 @@ gem "config"
 gem "ransack"
 gem "whenever", require: false
 gem "sdoc",         "0.4.0", group: :doc
+gem "public_activity"
 
 group :development, :test do
   gem "sqlite3",     "1.3.9"

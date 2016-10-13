@@ -14,6 +14,8 @@ class UsersController < ApplicationController
       .page(params[:page]).per Settings.favorites.page
     @reading_books = Book.where(id: Mark.reading(@user).pluck(:book_id))
       .page(params[:page]).per Settings.favorites.page
+    @activities = PublicActivity::Activity.order("created_at desc")
+      .where owner: @user
   end
 
   def update

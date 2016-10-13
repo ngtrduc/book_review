@@ -25,9 +25,15 @@ end
 end
 
 5.times do |mark|
-  Mark.create! user_id: (mark+1),
-  book_id: (mark+2),
-  status:0
+  Mark.create! user_id: 3,
+  book_id: (mark+1),
+  status:0,
+  favorite: true
+end
+
+10.times do |favorite|
+  Favorite.create! user_id: 3,
+  book_id: (favorite+1)
 end
 
 5.times do |m|

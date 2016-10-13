@@ -1,4 +1,7 @@
 class Mark < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: -> (controller, model){controller && controller.current_user}
+
   enum status: [:reading, :read]
 
   belongs_to :user
