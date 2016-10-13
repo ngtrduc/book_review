@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,106 +11,104 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918091443) do
+ActiveRecord::Schema.define(version: 20160624042849) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.string   "location"
-    t.string   "province"
-    t.string   "district"
+  create_table "activities", force: :cascade do |t|
+    t.integer  "action_type"
+    t.integer  "other_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id"
+
+  create_table "books", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.date     "publish_date"
+    t.string   "author"
+    t.string   "number_page"
+    t.string   "picture"
+    t.float    "rate_avg"
+    t.integer  "category_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "books", ["category_id"], name: "index_books_on_category_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
+    t.string   "string"
     t.integer  "user_id"
-    t.integer  "place_review_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["place_review_id"], name: "index_comments_on_place_review_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.integer  "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "feedbacks", force: :cascade do |t|
-    t.string   "description"
-    t.string   "image"
-    t.integer  "place_review_id"
+  add_index "comments", ["review_id"], name: "index_comments_on_review_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "status"
+    t.integer  "activity_id"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["place_review_id"], name: "index_feedbacks_on_place_review_id"
-    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "notifications", force: :cascade do |t|
-    t.integer  "noti_type"
+  add_index "likes", ["activity_id"], name: "index_likes_on_activity_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
+
+  create_table "marks", force: :cascade do |t|
+    t.integer  "status"
+    t.boolean  "favorite"
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "marks", ["book_id"], name: "index_marks_on_book_id"
+  add_index "marks", ["user_id"], name: "index_marks_on_user_id"
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "status"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
-  create_table "place_reviews", force: :cascade do |t|
-    t.string   "tittle"
-    t.string   "description"
-    t.string   "image"
-    t.float    "rate"
-    t.integer  "address_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["address_id"], name: "index_place_reviews_on_address_id"
-  end
+  add_index "requests", ["user_id"], name: "index_requests_on_user_id"
 
-  create_table "profiles", force: :cascade do |t|
-    t.string   "name"
-    t.string   "avatar"
-    t.integer  "gender"
-    t.string   "phone"
+  create_table "reviews", force: :cascade do |t|
+    t.string   "content"
+    t.float    "rating"
     t.integer  "user_id"
-    t.integer  "address_id"
+    t.integer  "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_profiles_on_address_id"
-    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "suggestions", force: :cascade do |t|
-    t.string   "tittle"
-    t.string   "description"
-    t.string   "image"
-    t.integer  "user_id"
-    t.integer  "address_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["address_id"], name: "index_suggestions_on_address_id"
-    t.index ["user_id"], name: "index_suggestions_on_user_id"
-  end
-
-  create_table "travel_teams", force: :cascade do |t|
-    t.string   "description"
-    t.datetime "time_start"
-    t.datetime "time_return"
-    t.integer  "user_id"
-    t.integer  "place_review_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["place_review_id"], name: "index_travel_teams_on_place_review_id"
-    t.index ["user_id"], name: "index_travel_teams_on_user_id"
-  end
-
-  create_table "user_teams", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "travel_team_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["travel_team_id"], name: "index_user_teams_on_travel_team_id"
-    t.index ["user_id"], name: "index_user_teams_on_user_id"
-  end
+  add_index "reviews", ["book_id"], name: "index_reviews_on_book_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "admin"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -120,8 +119,10 @@ ActiveRecord::Schema.define(version: 20160918091443) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.string   "name"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
