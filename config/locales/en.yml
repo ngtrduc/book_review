@@ -60,10 +60,16 @@ en:
     list_favorite_books: "List favorite books"
     list_reading_history: "List reading history"
     start_read: "updated at "
+  marks:
+    success: "Success"
+    error: "Error"
   books:
+    favorite: "favorite"
+    unfavorite: "unfavorite"
     mark_button:
       reading: "Reading"
       read: "Read"
+      favorite: "Favorite"
     category: "Category"
     description: "Description"
     review: "Review"
@@ -113,6 +119,10 @@ en:
       update_fail: "My review has been not updated"
       delete_success: "My review has been deleted"
       delete_fail: "My review has not been deleted"
+  activities:
+    myactivity: "List activities"
+    new_review: "A new review"
+    create_new_review: "You have just created a new review"
 
   admin:
     categories:
@@ -200,6 +210,9 @@ en:
     general:
       date_format: "YYYY/MM/DD"
     flash:
+      marks:
+        success: "Update success."
+        fails: "Update fails."
       books:
         create_success: "New book has been created."
         updated_success: "Book has been updated."
@@ -272,8 +285,13 @@ en:
         title:
           following: "Following"
           followers: "Followers"
+    users:
+      unlike: "unlike"
+      like: "like"
   comments:
     success: "Success"
     comment: "Comment"
     commented: "Commented at"
     ago: "ago"
+    a_new_comment: "A new comment"
+    new_comment: "You have just created a new comment"

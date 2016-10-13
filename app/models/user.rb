@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
     following.include? other_user
   end
 
+  def liked? activity
+    likes.find_by activity_id: activity.id
+  end
+
   private
   def picture_size
     if picture.size > Settings.users.pic_size.megabytes

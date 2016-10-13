@@ -26,6 +26,12 @@
         <%= render "favorite" %>
       <% end %>
       <%= render "reading_history" %>
+    <br>
+    <br>
+    <div class="col-md-8" id="activity-id">
+      <% unless current_user == @user %>
+        <%= render @activities %>
+      <% end %>
     </div>
   </div>
 </div>

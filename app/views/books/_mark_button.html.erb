@@ -2,9 +2,29 @@
   <% load_mark_button_class @book %>
 
   <div class="reading_form" >
-    <%= render "reading" %>
+    <div class="<%= @class_reading %> " >
+      <%= form_for(@reading, method: @reading_method, class: "form-mark") do |f| %>
+        <%= hidden_field_tag :book_id, @book.id %>
+        <%= hidden_field_tag :status, Settings.books.marked_book.reading %>
+        <%= f.submit t("books.mark_button.reading"), class: "btn btn-lg reading" %>
+      <% end %>
+    </div>
   </div>
   <div class="read_form" >
-    <%= render "read" %>
+    <div class="<%= @class_read %> " >
+      <%= form_for(@read, method: @read_method) do |f| %>
+        <%= hidden_field_tag :book_id, @book.id %>
+        <%= hidden_field_tag :status, Settings.books.marked_book.read %>
+        <%= f.submit t("books.mark_button.read"), class: "btn btn-lg readed" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="favorite_form" >
+    <div class="<%= @class_favorite %> " >
+      <%= form_for(@favorite, method: @favorite_method) do |f| %>
+        <%= hidden_field_tag :book_id, @book.id %>
+        <%= f.submit t("books.mark_button.favorite"), class: "btn btn-lg favorite" %>
+      <% end %>
+    </div>
   </div>
 </div>

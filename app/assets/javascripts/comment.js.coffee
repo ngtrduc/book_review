@@ -1,4 +1,4 @@
-$(document).on 'page:change', ->
+$(document).on 'ready page:change', ->
   $('#new_comment').off 'submit'
   $('#new_comment').on 'submit', (event) ->
     event.preventDefault()

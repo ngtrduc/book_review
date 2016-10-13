@@ -26,7 +26,8 @@
         <div class = "reviews_comments">
           <%= render review.comments %>
         </div>
-        <%= render "comments/comment_form", comment: review.comments.build %>
+        <%= render "comments/comment_form",
+          comment: review.user.comments.build(review_id: review.id) %>
       </p>
     </br>
     </div>

@@ -10,14 +10,19 @@ module BooksHelper
   def load_mark_button_class book
     load_reading book.marked_reading?(current_user), book
     load_read book.marked_read?(current_user), book
+    load_favorite book.marked_favorite?(current_user), book
   end
 
-  ["reading", "read"].each do |action|
+  ["reading", "read", "favorite"].each do |action|
     define_method("load_#{action}") do |check, book|
       instance_variable_set "@class_#{action}",
         check ? "btn-marked-#{action}" : "btn-#{action}"
       instance_variable_set "@#{action}_method", check ? :delete : :post
-      object = check ? book.load_marked_book(current_user) : book.marks.build
+      if action == "favorite"
+        object = check ? book.load_marked_favorite(current_user) : book.favorites.build
+      else
+        object = check ? book.load_marked_book(current_user) : book.marks.build
+      end
       instance_variable_set "@#{action}", object
     end
   end

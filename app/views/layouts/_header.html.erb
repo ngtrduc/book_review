@@ -6,37 +6,8 @@
         <li><%= link_to t(:home), root_path %></li>
         <li><%= link_to t(:help), static_pages_help_path %></li>
         <% if user_signed_in? %>
-          <% if can? :manage, :all %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= t "header.function" %><b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to t("static_pages.header.add_category"),
-                  new_admin_category_path %>
-                </li>
-                <li class="divider"></li>
-              </ul>
-            </li>
-          <% end %>
           <li>
             <%= link_to t("static_pages.header.user"), users_path %>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= t "header.account" %><b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li><%= link_to t("static_pages.header.profile"), edit_user_path(current_user) %></li>
-              <li><%= link_to t("static_pages.header.setting"),
-                edit_user_registration_path(current_user) %>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <%= link_to t("static_pages.header.logout"),
-                  destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
           </li>
           <% if can? :manage, :all %>
             <li class="dropdown">
@@ -44,6 +15,9 @@
                 <%= t "static_pages.header.manage" %><b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
+                <li><%= link_to t("static_pages.header.add_category"),
+                  new_admin_category_path %>
+                </li>
                 <li>
                   <%= link_to t("static_pages.header.list_book"), admin_books_path %>
                 </li>
@@ -60,7 +34,26 @@
             </li>
             <li><%= link_to t(:book), books_path %></li>
           <% end %>
-
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= t "static_pages.header.account" %><b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to t("static_pages.header.profile"),
+                  user_path(current_user) %>
+              </li>
+              <li>
+                <%= link_to t("static_pages.header.setting"),
+                  edit_user_registration_path(current_user) %>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to t("static_pages.header.logout"),
+                  destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
         <% else %>
           <li><%= link_to t("static_pages.header.login"), new_user_session_path %></li>
         <% end %>
