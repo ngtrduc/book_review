@@ -15,8 +15,18 @@ Rails.application.routes.draw do
     resources :requests, only: [:index, :update]
     resources :users
   end
+
+  resources :users do
+    member do
+      get "/:relationship", :to => "relationships#index", :as => :relationships
+    end
+  end
   resources :books
+  resources :users, except: [:new, :destroy, :create]
+  resources :marks, only: [:create, :destroy, :new]
   resources :users, only: [:index, :edit, :update]
   resources :requests, except: [:edit, :update]
   resources :reviews, except: [:show, :new, :index]
+  resources :relationships, only: [:create, :destroy]
+  resources :comments, only: [:create]
 end

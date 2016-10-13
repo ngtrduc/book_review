@@ -24,6 +24,12 @@ end
     category_id: 1
 end
 
+5.times do |mark|
+  Mark.create! user_id: (mark+1),
+  book_id: (mark+2),
+  status:0
+end
+
 5.times do |m|
   Category.create! name: "Truyen" + (m+1).to_s
 end
@@ -50,4 +56,11 @@ end
 5.times do |n|
   Request.create! user_id: 3,
   content: "Content#{n+1}"
+end
+
+5.times do |mark|
+  Mark.create! user_id: 1,
+  book_id: (mark+1),
+  status:0,
+  favorite: 0
 end

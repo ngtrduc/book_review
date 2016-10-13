@@ -11,6 +11,23 @@ class Book < ActiveRecord::Base
   validates :number_page, presence: true
   validate :picture_size
 
+
+  def marked_reading? current_user
+    marks.find_by user: current_user, status: Settings.books.marked_book.reading
+  end
+
+  def marked_read? current_user
+    marks.find_by user: current_user, status: Settings.books.marked_book.read
+  end
+
+  def destroy_marked_book current_user
+    marks.find_by(user: current_user).destroy
+  end
+
+  def load_marked_book current_user
+    marks.find_by user: current_user
+  end
+
   private
   def picture_size
     if picture.size > Settings.admin.books.pic_size.megabytes

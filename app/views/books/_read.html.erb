@@ -1,0 +1,7 @@
+<div class="<%= @class_read %> " >
+  <%= form_for(@read, method: @read_method) do |f| %>
+    <%= hidden_field_tag :book_id, @book.id %>
+    <%= hidden_field_tag :status, Settings.books.marked_book.read %>
+    <%= f.submit t("books.mark_button.read"), class: "btn btn-lg readed" %>
+  <% end %>
+</div>

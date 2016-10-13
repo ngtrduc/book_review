@@ -4,7 +4,9 @@ books:
   page: 10
   size: "200x250"
   url: "/assets/a4.jpg"
-
+  marked_book:
+    reading: 0
+    read: 1
 admin:
   books:
     page: 10
@@ -17,7 +19,11 @@ admin:
     url: "assets/avata.jpg"
 users:
   size: "50x50"
+  size_ava: "100x100"
   url: "/assets/user_3.png"
   pic_size: 5
 reviews:
   page: 5
+favorites:
+  page: 2
+  size: "100x100"

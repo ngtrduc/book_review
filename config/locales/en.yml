@@ -57,7 +57,13 @@ en:
       my_requests: "My requests"
   users:
     submit: "Submit"
+    list_favorite_books: "List favorite books"
+    list_reading_history: "List reading history"
+    start_read: "updated at "
   books:
+    mark_button:
+      reading: "Reading"
+      read: "Read"
     category: "Category"
     description: "Description"
     review: "Review"
@@ -68,6 +74,7 @@ en:
       search: "Search"
     show:
       error: "Cannot find Book!"
+      mark: "Mark read!"
   requests:
     table:
       content: "Content"
@@ -199,6 +206,7 @@ en:
         updated_error: "Book has not been updated."
         destroy_success: "Book has been destroy."
         destroy_error: "Book has not been destroy."
+        reading: "Reading"
       users:
         success: "New user has been created!"
         updated_success: "User has been updated."
@@ -255,3 +263,17 @@ en:
     all: "All User"
     name: "User Name"
     avatar: "Avatar"
+  views:
+    shared:
+      stats:
+        follow: "Follow"
+        unfollow: "Unfollow"
+        viewprofile: "View my profile"
+        title:
+          following: "Following"
+          followers: "Followers"
+  comments:
+    success: "Success"
+    comment: "Comment"
+    commented: "Commented at"
+    ago: "ago"
