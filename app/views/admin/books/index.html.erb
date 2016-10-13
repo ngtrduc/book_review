@@ -34,17 +34,17 @@
               size: Settings.admin.books.size), admin_books_path %>
           <% end %>
         </td>
-        <td><%= link_to book.title, "#" %></td>
+        <td><%= link_to book.title, admin_book_path(book) %></td>
         <td><%= book.description.truncate(50) %></td>
         <td><%= book.author %></td>
         <td><%= book.publish_date %></td>
         <td><%= book.number_page %></td>
-        <td><%= book.rate_avg %></td>
+        <td><%= book.rate_avg.round(1) %></td>
         <td>
           <%= link_to t("admin.books.table.show"), admin_book_path(book),
             class: "btn btn-primary" %>
           <%= link_to t("admin.books.table.edit"), edit_admin_book_path(book),
-            class: "btn btn-primary" %>
+            class: "btn btn-warning" %>
           <%= link_to t("admin.books.table.delete"), admin_book_path(book),
             method: :delete, data: {confirm: t("admin.messages.confirm")},
             class: "btn btn-danger" %>
