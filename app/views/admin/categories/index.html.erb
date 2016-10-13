@@ -1,0 +1,25 @@
+<% provide :title, t("admin.categories.all") %>
+<div class="title">
+  <%= link_to t("admin.categories.add_more_category"), new_admin_category_path,
+    class: "btn btn-md btn-primary" %>
+  <h1><%= t "admin.categories.all" %></h1>
+</div>
+  <table class="table table-striped">
+    <tr>
+      <th><%= t "admin.categories.category_name" %></th>
+    </tr>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= link_to category.name, [:admin, category] %></td>
+        <td><%= link_to t("admin.categories.edit"), edit_admin_category_path(category),
+          class: "btn btn-sm btn-info" %></td>
+        <td>
+          <%= link_to t("admin.categories.remove"), admin_category_path(category),
+            method: :delete, data: {confirm: t("admin.categories.sure")},
+            class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<%= paginate @categories %>
+<%= page_entries_info @categories %>

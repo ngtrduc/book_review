@@ -1,0 +1,26 @@
+<% provide :title, t("devise.sessions.new.log_in") %>
+<h1><%= t "devise.sessions.new.log_in" %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      </div>
+      <%= f.label :remember_me, class: "checkbox inline" do %>
+        <%= f.check_box :remember_me %>
+        <span><%= t "devise.sessions.new.remember_me" %></span>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit t("devise.sessions.new.log_in"), class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

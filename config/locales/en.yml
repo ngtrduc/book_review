@@ -1,0 +1,206 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+en:
+  app_name: "Book Reviewing System"
+  home: "Home"
+  help: "Help"
+  book: "Books"
+  about: "About"
+  contact: "Contact"
+  log_in: "Log in"
+  welcome_msg: "Welcome to Framgia BRS26"
+  sign_up_now: "Sign up now!"
+  sign_up: "Sign up"
+  about_msg: "This is the about page"
+  help_msg: "This is the help page"
+  author_name: "by HHL"
+  forgot_password: "Forgot your password?"
+  did_not_receive_confirmation: "Didn't receive confirmation instructions?"
+  static_pages:
+    home:
+      title: "Wellcome to Book Reviewing System"
+      sign_up_now: "Sign up now!"
+      introduce: "This is the home page"
+      linkto_framgia: "Framgia Vietnam"
+    help: "This is the help page"
+    header:
+      account: "Account"
+      profile: "Profile"
+      setting: "Settings"
+      logout: "Log out"
+      login: "Log in"
+      funtion: "Function"
+      add_category: "Add Category"
+      manage: "Manage"
+      list_book: "List books"
+      list_request: "List requests"
+      list_users: "List users"
+      user: "All Users"
+  books:
+    category: "Category"
+    description: "Description"
+    review: "Review"
+    reply: "Comment"
+    index:
+      all: "All Books"
+      title: "Title contains"
+      search: "Search"
+    show:
+      error: "Cannot find Book!"
+
+  admin:
+    categories:
+      success: "Create Category Success!"
+      fail: "Cannot Create Category!"
+      add: "Add Category"
+      create: "Create new category"
+      all: "All Category"
+      category_name: "Category Name"
+      add_more_category: "Add more Category"
+      category_updated: "Category Updated"
+      delete: "Category Deleted"
+      edit_category: "Edit Category"
+      save: "Save Changes"
+      edit: "Edit"
+      sure: "Are you sure?"
+      remove: "Delete"
+      please_login: "Please Login"
+
+    users:
+      table:
+        add: "Add new User"
+        id: "ID"
+        name: "Name"
+        email: "Email"
+        password: "Password"
+        role: "Role"
+        avatar: "Avatar"
+        edit: "Edit"
+        delete: "Delete"
+        show: "Show"
+      new:
+        create: "Create new user"
+      edit:
+        edit_user: "Edit user"
+        edit: "Edit"
+        back: "Back"
+    books:
+      table:
+        id: "ID"
+        picture: "Picture"
+        title: "Title"
+        description: "Description"
+        author: "Author"
+        edit: "Edit"
+        delete: "Delete"
+        number_page: "Number page"
+        rate_avg: "Rate average"
+        publish_date: "Publish date"
+        show: "Show"
+      new:
+        create_book: "Create a new book."
+      index:
+      add: "Add a new book"
+      edit:
+        edit_book: "Edit a book"
+        exit: "Exit"
+        back: "Back"
+
+    requests:
+      table:
+        id: "ID"
+        content: "Content"
+        status: "Status"
+        user: "Username sents request"
+        edit: "Edit"
+        delete: "Delete"
+        detail: "Detail"
+        accepted: "Accepted request"
+        denied: "Denied request"
+        waitting: "Waitting"
+      sent_email: "Sent email for user"
+
+    messages:
+      confirm: "Are you sure?"
+
+  submit: "Submit"
+
+  application:
+    general:
+      date_format: "YYYY/MM/DD"
+    flash:
+      books:
+        create_success: "New book has been created."
+        updated_success: "Book has been updated."
+        updated_error: "Book has not been updated."
+        destroy_success: "Book has been destroy."
+        destroy_error: "Book has not been destroy."
+      users:
+        success: "New user has been created!"
+        updated_success: "User has been updated."
+        update_error: "User has not been update"
+        destroy_success: "User has been destroy"
+        destroy_error: "User has not been destroy"
+
+  shared:
+    error: "error"
+    the_form_contain: "The form contains"
+
+  models:
+    book:
+      validate_picture: "Should be less than 5MB."
+
+  devise:
+    registrations:
+      new:
+        sign_up: "Sign Up"
+        characters_minimum: " characters minimum"
+      edit:
+        edit_user: "Edit "
+        waiting_confirmation: "Currently waiting confirmation for:"
+        password_notice: "(leave blank if you don't want to change it)"
+        current_password_notice: "(we need your current password to confirm your changes)"
+        update: "Update"
+        back: "back"
+    sessions:
+      new:
+        log_in: "Log in"
+        remember_me: "Remember me"
+    passwords:
+      new:
+        forgot_your_password: "Forgot your password"
+        sent_me_reset_password: "Send me reset password instructions"
+      edit:
+        change_your_password: "Change your password"
+        change_my_password: "Change my password"
+        confirm_password: "Confirm new password"
+        new_password: "New Password"
+    shared:
+      login: "Log in"
+      sign_up: "Sign up"
+      forgot_your_password: "Forgot your password"
+    confirmations:
+      new:
+        resent: "Resend confirmation instructions"
+  user:
+    all: "All User"
+    name: "User Name"
+    avatar: "Avatar"
