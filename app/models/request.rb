@@ -4,4 +4,6 @@ class Request < ActiveRecord::Base
   enum status: [:waitting, :denied, :accepted]
 
   validates :content, presence: true
+
+  scope :accepted, ->{where status: :accepted}
 end

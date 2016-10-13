@@ -1,0 +1,36 @@
+<div class="row">
+  <aside class="col-md-3">
+    <section class="user_info">
+      <% if @user.avatar? %>
+        <%= image_tag(@user.avatar, size: Settings.users.size_ava) %>
+      <% else %>
+        <%= image_tag Settings.users.url, size: Settings.users.size_ava %>
+      <% end %>
+      <h1><%= @user.name %></h1>
+      <span><%= link_to t("views.shared.stats.viewprofile"), @user %></span>
+    </section>
+    <section class="stats">
+      <%= render "shared/stats" %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <% @users.each do |user| %>
+          <li>
+            <% if user.avatar.present? %>
+              <%= link_to image_tag(user.avatar, size: Settings.users.size),
+                user_path(user) %>
+            <% else %>
+              <%= link_to image_tag(Settings.users.url, size: Settings.users.size),
+                user_path(user) %>
+            <% end %>
+            <%= link_to user.name, user %>
+          </li>
+        <div id = "space" ></div>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

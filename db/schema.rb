@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 20160628024448) do
     t.integer  "action_type"
     t.integer  "other_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "activities", ["user_id"], name: "index_activities_on_user_id"
@@ -32,8 +32,8 @@ ActiveRecord::Schema.define(version: 20160628024448) do
     t.string   "picture"
     t.float    "rate_avg"
     t.integer  "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "books", ["category_id"], name: "index_books_on_category_id"
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20160628024448) do
     t.integer  "status"
     t.integer  "activity_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "likes", ["activity_id"], name: "index_likes_on_activity_id"
@@ -86,12 +86,16 @@ ActiveRecord::Schema.define(version: 20160628024448) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "relationships", ["followed_id"], name: "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+  add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id"
+
   create_table "requests", force: :cascade do |t|
     t.string   "content"
-    t.integer  "status", default: 0
+    t.integer  "status",     default: 0
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id"
@@ -109,18 +113,18 @@ ActiveRecord::Schema.define(version: 20160628024448) do
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email", default: "", null: false
-    t.string   "encrypted_password", default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count", default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.integer  "role", default: 1
+    t.integer  "role",                   default: 1
     t.string   "avatar"
   end
 

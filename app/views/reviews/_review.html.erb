@@ -23,7 +23,10 @@
           <%= link_to t("reviews.delete"), review_path(review), method: :delete,
             data: {confirm: t("reviews.confirm")}, class: "btn btn-danger" %>
         <% end %>
-        <%= link_to t("reviews.comment"), "#", class: "btn btn-primary" %>
+        <div class = "reviews_comments">
+          <%= render review.comments %>
+        </div>
+        <%= render "comments/comment_form", comment: review.comments.build %>
       </p>
     </br>
     </div>
