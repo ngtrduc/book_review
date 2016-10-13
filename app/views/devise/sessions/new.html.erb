@@ -1,0 +1,39 @@
+<div class="top-content">
+  <div class="inner-bg">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 well">
+              <div class="form-top">
+                <h1>Login</h1>
+                <%= button_to "Facebook", user_facebook_omniauth_authorize_path,
+                  class: "btn-primary form-control" %>
+                <h4>--------------------------------OR----------------------------------</h4>
+              </div>
+            <div class="form-bottom">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="form-group">
+                    <%= f.email_field :email, placeholder: "User email....", class: "form-control", autofocus: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.password_field :password, placeholder: "User password....", class: "form-control", autocomplete: "off" %>
+                  </div>
+                  <% if devise_mapping.rememberable? -%>
+                    <div class="form-group">
+                      <%= f.check_box :remember_me %>
+                      <%= f.label :remember_me %>
+                    </div>
+                  <% end -%>
+                  <%= f.submit "Log in",class: "btn-success form-control" %>
+              <% end -%>
+              <div style="margin-top:15px;">
+                Not a member?
+                <%= render "devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+</div>
