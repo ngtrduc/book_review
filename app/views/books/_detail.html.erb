@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-5">
+    <%= get_picture @book %>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-7">
+    <div class="title">
+      <%= @book.title %>
+    </div>
+    <div class="description">
+      <h4><span><%= t "books.description" %></span></h4>
+      <p><%= @book.description %></p>
+      <p><%= @book.category.name %></p>
+    </div>
+  </div>
+</div>

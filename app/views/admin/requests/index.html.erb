@@ -1,0 +1,43 @@
+<div id="sent_email">
+  <%= link_to t("admin.requests.sent_email"), "#",
+    class: "btn btn-primary" %>
+</div>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th><%= t "admin.requests.table.id" %></th>
+      <th><%= t "admin.requests.table.content" %></th>
+      <th><%= t "admin.requests.table.status" %></th>
+      <th><%= t "admin.requests.table.user" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.id %></td>
+        <td><%= request.content %></td>
+        <td>
+          <% if request.accepted? %>
+            <%= t "admin.requests.table.accepted" %>
+          <% elsif request.denied? %>
+            <%= t "admin.requests.table.denied" %>
+          <% else %>
+            <%= t "admin.requests.table.waitting" %>
+          <% end %>
+        </td>
+        <td><%= link_to request.user.name, "#" %></td>
+        <td>
+          <%= link_to t("admin.requests.table.edit"), "#",
+            class: "btn btn-primary" %>
+          <%= link_to t("admin.requests.table.delete"), "#",
+            method: :delete, data: {confirm: t("admin.messages.confirm")},
+            class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @requests %>
+<%= page_entries_info @requests %>

@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+    <hr>
+    <ul class="breadcrumb">
+      <li><%= link_to t(:home), books_path %></li>
+      <li><%= t "books.category" %></li>
+      <li class="active"><%= @book.category.name %></li>
+    </ul>
+    <hr>
+  </div>
+  <%= render "detail" %>
+  <%= render "review" %>
+</div>

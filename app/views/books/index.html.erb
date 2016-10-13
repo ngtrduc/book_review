@@ -1,0 +1,28 @@
+<h1><%= t ".all" %></h1>
+
+  <%= search_form_for @search do |f| %>
+    <div class="field1">
+      <%= f.label :title %>
+      <%= f.text_field :title_cont, class: "form-control" %>
+    </div>
+    <div class="actions"><%= f.submit t ".search" %></div>
+  <% end %>
+
+<div class="section group">
+  <br>
+  <% @books.each do |book| %>
+    <div class ="row1">
+      <% if book.picture.present? %>
+        <%= link_to image_tag(book.picture, size: Setting.books.size), book %>
+      <% else %>
+        <%= link_to image_tag(Settings.books.url, size: Settings.books.size), book %>
+      <% end %>
+      <h4><%= link_to book.title, book_path(book) %></h4>
+      <p><%= book.author %></p>
+    </div>
+  <% end %>
+</div>
+<div class="page">
+  <%= paginate @books %>
+  <%= page_entries_info @books %>
+</div>
