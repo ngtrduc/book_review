@@ -1,13 +1,26 @@
 <h1><%= t ".all" %></h1>
-
+<div class="section group">
+  <h2><%= t ".search" %></h2>
   <%= search_form_for @search do |f| %>
     <div class="field1">
       <%= f.label :title %>
       <%= f.text_field :title_cont, class: "form-control" %>
     </div>
-    <div class="actions"><%= f.submit t ".search" %></div>
-  <% end %>
 
+    <div class="field1">
+      <%= f.label :rate %>
+      <%= f.text_field :rate_avg_gteq, class: "form-control" %>
+    </div>
+
+    <div class="field1">
+      <%= f.label :category_id %>
+      <%= f.select :category_id_eq,
+        options_from_collection_for_select(@categories, :id, :name), class: "form-control" %>
+    </div>
+
+    <div class="actions1"><%= f.submit t ".search" %></div>
+  <% end %>
+</div>
 <div class="section group">
   <br>
   <% @books.each do |book| %>

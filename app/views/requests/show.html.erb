@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-1">
+    <h3><%= t "requests.show.title" %></h3>
+    <p><%= @request.content %></p>
+    <%= link_to t("admin.books.edit.back"), requests_path,
+      class: "btn btn-primary" %>
+  </div>
+</div>
