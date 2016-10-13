@@ -42,6 +42,7 @@ en:
       linkto_framgia: "Framgia Vietnam"
     help: "This is the help page"
     header:
+      my_actions: "My actions"
       account: "Account"
       profile: "Profile"
       setting: "Settings"
@@ -55,6 +56,7 @@ en:
       list_users: "List users"
       user: "All Users"
       my_requests: "My requests"
+      my_actions: "My actions"
   users:
     submit: "Submit"
     list_favorite_books: "List favorite books"
@@ -64,6 +66,8 @@ en:
     success: "Success"
     error: "Error"
   books:
+    author: "Author:"
+    rate_avg: "Rate:"
     favorite: "favorite"
     unfavorite: "unfavorite"
     mark_button:
@@ -91,7 +95,7 @@ en:
       create_at: "Create at"
       add_request: "Add new a request"
     new:
-      sent: "Sent"
+      sent: "Send"
       title: "New your request"
       content: "Input content your request"
     show:
@@ -181,7 +185,7 @@ en:
       new:
         create_book: "Create a new book."
       index:
-      add: "Add a new book"
+      add: "Add book"
       edit:
         edit_book: "Edit a book"
         exit: "Exit"
@@ -199,7 +203,7 @@ en:
         accepted: "Accepted request"
         denied: "Denied request"
         waitting: "Waitting"
-      sent_email: "Sent email for user"
+      sent_email: "Accept request"
 
     messages:
       confirm: "Are you sure?"
@@ -207,6 +211,10 @@ en:
   submit: "Submit"
 
   application:
+    admin:
+      books:
+        updated_success: "Book has been updated."
+        updated_error: "Book has not been updated"
     general:
       date_format: "YYYY/MM/DD"
     flash:

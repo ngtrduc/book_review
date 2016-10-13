@@ -6,6 +6,7 @@
       <li><%= t "books.category" %></li>
       <li class="active"><%= @book.category.name %></li>
     </ul>
+    <div class="review-rating" data-score="<%= @book.rate_avg %>"></div>
     <hr>
   </div>
   <div class="row">

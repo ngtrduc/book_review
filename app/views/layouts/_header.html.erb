@@ -7,6 +7,9 @@
         <li><%= link_to t(:help), static_pages_help_path %></li>
         <% if user_signed_in? %>
           <li>
+            <%= link_to t("static_pages.header.my_actions"), user_path(current_user) %>
+          </li>
+          <li>
             <%= link_to t("static_pages.header.user"), users_path %>
           </li>
           <% if can? :manage, :all %>

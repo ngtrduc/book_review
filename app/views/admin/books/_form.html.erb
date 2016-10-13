@@ -22,7 +22,14 @@
 
       <div class="form-group">
         <%= f.label :number_page %><br>
-        <%= f.number_field :number_page %>
+        <%= f.number_field :number_page, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :publish_date %><br>
+        <div class="form-group">
+          <%= f.text_field :publish_date, class: "form-control",
+            data: {date_format: I18n.t("application.general.date_format")} %>
+        </div>
       </div>
 
     </div>
@@ -30,25 +37,27 @@
     <div class="col-md-1"></div>
 
     <div class="col-md-5 col-xs-12 col-sm-5 ">
-
-      <div class="form-group">
-        <%= f.label :publish_date %><br>
-        <div class="input-group">
-          <%= f.text_field :publish_date, class: "form-control",
-            data: {date_format: I18n.t("application.general.date_format")} %>
-        </div>
-      </div>
-
       <div class="form-group">
         <%= f.label :category %><br>
-        <%= f.collection_select :category_id, @categories, :id, :name %>
+        <%= f.collection_select :category_id, @categories, :id, :name, class: "form-control" %>
       </div>
       <br>
-      <br>
-      <br>
-      <span class="picture">
-        <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
-      </span>
+      <div class="form-group">
+        <div>
+          <% if @book.picture.present? %>
+            <%= link_to image_tag(@book.picture, size: Settings.admin.books.size), @book %>
+          <% else %>
+            <%= link_to image_tag(Settings.books.url, size: Settings.admin.books.size), @book %>
+          <% end %>
+        </div>
+        <br>
+        <br>
+        <div>
+          <span class="picture">
+            <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png", class: "form-control" %>
+          </span>
+        </div>
+      </div>
       <div class="form-group">
         <%= f.submit t(:submit), class: "btn btn-primary" %>
       </div>

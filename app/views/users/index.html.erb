@@ -5,11 +5,13 @@
     <table class="table table-striped">
       <tr>
         <th><%= t "users.name" %></th>
+        <th><%= t "admin.users.table.email" %></th>
         <th><%= t "users.avatar" %></th>
       </tr>
       <% @users.each do |user| %>
         <tr>
           <td><%= link_to user.name, user %></td>
+          <td><%= user.email%></td>
           <td>
             <% if user.avatar.present? %>
               <%= link_to image_tag(user.avatar, size: Settings.users.size), user %>

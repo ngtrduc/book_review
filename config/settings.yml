@@ -1,9 +1,10 @@
-per_page: 10
+per_page: 12
 accept_request: 2
 books:
   page: 10
   size: "200x250"
-  url: "/assets/a4.jpg"
+  size2: "350x400"
+  url: "/assets/dac-nhan-tam.jpg"
   marked_book:
     reading: 0
     read: 1

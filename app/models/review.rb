@@ -11,11 +11,16 @@ class Review < ActiveRecord::Base
   validate :check_rating
 
   scope :order_reviews, ->{order created_at: :DESC}
+  after_create :update_book_rate_avg
 
   private
   def check_rating
     if rating < 1 || rating > 10
       errors.add :rating, I18n.t("reviews.validate_rating")
     end
+  end
+
+  def update_book_rate_avg
+    book.update_rate_avg
   end
 end

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user if @user.nil?
-    @favorite_books = Book.where(id: Mark.favorite(@user).pluck(:book_id))
+    @favorite_books = Book.where(id: Favorite.list_favorite(@user).pluck(:book_id))
       .page(params[:page]).per Settings.favorites.page
     @reading_books = Book.where(id: Mark.reading(@user).pluck(:book_id))
       .page(params[:page]).per Settings.favorites.page
