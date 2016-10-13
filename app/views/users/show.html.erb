@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <h3><%= t "admin.users.table.name" %> <%= @user.name %></h3>
+    <p> <%= t "admin.users.table.email" %> <%= @user.email %> </p>
+    <p> <%= t "admin.users.table.password" %> <%= @user.password %> </p>
+    <p> <%= t "admin.users.table.avatar" %> <%= @user.avatar %> </p>
+    <br>
+    <% if @user.avatar.present? %>
+      <%= link_to image_tag(@user.avatar, size: Settings.admin.users.size),
+        admin_users_path %>
+    <% else %>
+      <%= link_to image_tag(Settings.admin.users.url,
+        size: Settings.admin.users.size), admin_users_path %>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to t("admin.users.edit.edit"), edit_user_path(@user),
+    class: "btn btn-primary" %> |
+  <%= link_to t("admin.users.edit.back"), admin_users_path,
+    class: "btn btn-primary" %>
+</div>

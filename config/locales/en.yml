@@ -54,6 +54,9 @@ en:
       list_request: "List requests"
       list_users: "List users"
       user: "All Users"
+      my_requests: "My requests"
+  users:
+    submit: "Submit"
   books:
     category: "Category"
     description: "Description"
@@ -65,6 +68,44 @@ en:
       search: "Search"
     show:
       error: "Cannot find Book!"
+  requests:
+    table:
+      content: "Content"
+      id: "ID"
+      index: "Index"
+      show: "Show"
+      delete: "Delete"
+      create_at: "Create at"
+      add_request: "Add new a request"
+    new:
+      sent: "Sent"
+      title: "New your request"
+      content: "Input content your request"
+    show:
+      title: "Content your request"
+  reviews:
+    user_review: "List reviews of book "
+    created_by: "Created by"
+    created_at: " at"
+    edit: "Edit"
+    delete: "Delete"
+    comment: "Comment"
+    confirm: "Are you sure?"
+    rate: "Rate: "
+    content: "Content review: "
+    validate_rating: "You must rate with: rate > 0 and rate <10 "
+    input_rate: "Input 0 < number <= 10 "
+    review_form:
+      submit: "Submit"
+    cancle: "Cancle"
+    edit_title: "Edit your review"
+    messages:
+      create_success: "My review has been sent."
+      create_fail: "My review has not been sent."
+      update_success: "My review has been updated"
+      update_fail: "My review has been not updated"
+      delete_success: "My review has been deleted"
+      delete_fail: "My review has not been deleted"
 
   admin:
     categories:
@@ -83,6 +124,11 @@ en:
       sure: "Are you sure?"
       remove: "Delete"
       please_login: "Please Login"
+    request_mailer:
+      request_accepted: "Your request is accepted"
+      success: "Success"
+      fail: "Failed"
+      hello: "Hello "
 
     users:
       table:
@@ -159,6 +205,11 @@ en:
         update_error: "User has not been update"
         destroy_success: "User has been destroy"
         destroy_error: "User has not been destroy"
+      user_requests:
+        create_success: "My request has been sent to admin."
+        destroy_success: "My request has been destroy."
+        destroy_fail: "My request has not been destroy."
+
 
   shared:
     error: "error"

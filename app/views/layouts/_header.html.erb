@@ -27,11 +27,14 @@
               <%= t "header.account" %><b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to t("static_pages.header.profile"), "#" %></li>
-              <li><%= link_to t("static_pages.header.setting"), edit_user_registration_path(current_user) %></li>
+              <li><%= link_to t("static_pages.header.profile"), edit_user_path(current_user) %></li>
+              <li><%= link_to t("static_pages.header.setting"),
+                edit_user_registration_path(current_user) %>
+              </li>
               <li class="divider"></li>
               <li>
-                <%= link_to t("static_pages.header.logout"), destroy_user_session_path, method: :delete %>
+                <%= link_to t("static_pages.header.logout"),
+                  destroy_user_session_path, method: :delete %>
               </li>
             </ul>
           </li>
@@ -52,6 +55,9 @@
               </ul>
             </li>
           <% else %>
+            <li>
+              <%= link_to t("static_pages.header.my_requests"), requests_path %>
+            </li>
             <li><%= link_to t(:book), books_path %></li>
           <% end %>
 

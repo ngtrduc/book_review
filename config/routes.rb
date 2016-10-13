@@ -12,9 +12,11 @@ Rails.application.routes.draw do
     root "categories#index"
     resources :categories
     resources :books
-    resources :requests, only: [:index]
+    resources :requests, only: [:index, :update]
     resources :users
   end
   resources :books
-  resources :users, only: [:index]
+  resources :users, only: [:index, :edit, :update]
+  resources :requests, except: [:edit, :update]
+  resources :reviews, except: [:show, :new, :index]
 end
