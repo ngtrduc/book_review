@@ -257,6 +257,7 @@ en:
         log_in: "Log in"
         remember_me: "Remember me"
         sign_in_with_google: "Sign in with Google"
+        sign_in_with_facebook: "Sign in with Facebook"
     passwords:
       new:
         forgot_your_password: "Forgot your password"
