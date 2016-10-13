@@ -1,5 +1,6 @@
-class Book < ApplicationRecord
+class Book < ActiveRecord::Base
   belongs_to :category
-  has_many :user_books, dependent: :destroy
+  mount_uploader :picture, PictureUploader
+  has_many :marks, dependent: :destroy
   has_many :reviews, dependent: :destroy
 end

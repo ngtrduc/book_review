@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
   root "static_pages#home"
-
-  get  "static_pages/home"
-  get  "static_pages/help"
-  get  "static_pages/about"
-  get  "static_pages/contact"
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
+  get "static_pages/help"
+  get "static_pages/about"
 
   namespace :admin do
-    root "dashboard#index"
+    root "categories#index"
+    resources :categories
   end
-
-  resources :users, only: [:edit, :update]
-
+  resources :books
 end
