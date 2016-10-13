@@ -1,37 +1,35 @@
 <div class="col-md-12 paper">
-  <% @reviews.each do |review| %>
-    <div id="sub_review">
-      <h4 class="display_inline"><strong><%= review.user.name %></strong></h4>
+  <div id="sub_review">
+    <h4 class="display_inline"><strong><%= review.user.name %></strong></h4>
 
-      <div class="show-rating-review">
-        <%= t("reviews.rate")%>
-        <%= review.rating %>
-      </div>
-      <p><%= t("reviews.content")%> <%= review.content %></p>
-      <p class="text-left display_inline">
-        <em>
-          <%= t "reviews.created_by" %>
-          <%= link_to review.user.name, review.user %>
-          <%= t "reviews.created_at" %>
-          <%= review.created_at %>
-        </em>
-      </p>
-      <p>
-        <% if can? :update, review %>
-          <%= link_to t("reviews.edit"), edit_review_path(review),
-            class: "btn btn-primary" %>
-          <%= link_to t("reviews.delete"), review_path(review), method: :delete,
-            data: {confirm: t("reviews.confirm")}, class: "btn btn-danger" %>
-        <% end %>
-        <div class = "reviews_comments">
-          <%= render review.comments %>
-        </div>
-        <%= render "comments/comment_form",
-          comment: review.user.comments.build(review_id: review.id) %>
-      </p>
-    </br>
+    <div class="show-rating-review">
+      <%= t("reviews.rate")%>
+      <%= review.rating %>
     </div>
-  <% end %>
+    <p><%= t("reviews.content")%> <%= review.content %></p>
+    <p class="text-left display_inline">
+      <em>
+        <%= t "reviews.created_by" %>
+        <%= link_to review.user.name, review.user %>
+        <%= t "reviews.created_at" %>
+        <%= review.created_at %>
+      </em>
+    </p>
+    <p>
+      <% if can? :update, review %>
+        <%= link_to t("reviews.edit"), edit_review_path(review),
+          class: "btn btn-primary" %>
+        <%= link_to t("reviews.delete"), review_path(review), method: :delete,
+          data: {confirm: t("reviews.confirm")}, class: "btn btn-danger" %>
+      <% end %>
+      <div class = "reviews_comments">
+        <%= render review.comments %>
+      </div>
+      <%= render "comments/comment_form",
+        comment: review.user.comments.build(review_id: review.id) %>
+    </p>
+  </br>
+  </div>
 </div>
 <%= paginate @reviews %>
 <%= page_entries_info @reviews %>

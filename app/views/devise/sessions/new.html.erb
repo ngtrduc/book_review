@@ -23,6 +23,8 @@
     <% end %>
     <%= render "devise/shared/links" %>
     <%= link_to t("devise.sessions.new.sign_in_with_google"),
-      user_omniauth_authorize_path(:google_oauth2) %>
+      user_omniauth_authorize_path(:google_oauth2) %><br/>
+    <%= link_to t("devise.sessions.new.sign_in_with_facebook"),
+      user_facebook_omniauth_authorize_path %>
   </div>
 </div>

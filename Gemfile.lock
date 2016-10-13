@@ -127,6 +127,8 @@ GEM
     omniauth (1.3.1)
       hashie (>= 1.2, < 4)
       rack (>= 1.0, < 3)
+    omniauth-facebook (3.0.0)
+      omniauth-oauth2 (~> 1.2)
     omniauth-google-oauth2 (0.4.1)
       jwt (~> 1.5.2)
       multi_json (~> 1.3)
@@ -201,6 +203,9 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
     slop (3.6.0)
+    social-share-button (0.3.1)
+      coffee-rails
+      sass-rails
     spring (1.1.3)
     sprockets (3.6.2)
       concurrent-ruby (~> 1.0)
@@ -247,6 +252,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   omniauth
+  omniauth-facebook
   omniauth-google-oauth2
   public_activity
   rails (= 4.2.6)
@@ -255,6 +261,7 @@ DEPENDENCIES
   sass-rails (= 5.0.2)
   sdoc (= 0.4.0)
   sidekiq
+  social-share-button
   spring (= 1.1.3)
   sqlite3 (= 1.3.9)
   turbolinks (= 2.3.0)

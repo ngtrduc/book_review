@@ -13,6 +13,7 @@ gem "figaro"
 gem "devise"
 gem "omniauth"
 gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
 gem "coffee-rails", "4.1.0"
 gem "jquery-rails", "4.0.3"
 gem "turbolinks",   "2.3.0"
@@ -22,6 +23,7 @@ gem "ransack"
 gem "whenever", require: false
 gem "sdoc",         "0.4.0", group: :doc
 gem "public_activity"
+gem "social-share-button"
 
 group :development, :test do
   gem "sqlite3",     "1.3.9"
