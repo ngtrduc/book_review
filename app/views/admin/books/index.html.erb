@@ -39,7 +39,7 @@
         <td><%= book.author %></td>
         <td><%= book.publish_date %></td>
         <td><%= book.number_page %></td>
-        <td><%= book.rate_avg.round(1) %></td>
+        <td><%= book.rate_avg.round(1) if book.rate_avg %></td>
         <td>
           <%= link_to t("admin.books.table.show"), admin_book_path(book),
             class: "btn btn-primary" %>
