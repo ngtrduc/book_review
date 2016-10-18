@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :requests, except: [:edit, :update]
   resources :reviews, except: [:show, :new, :index]
   resources :relationships, only: [:create, :destroy]
-  resources :comments, only: [:create]
+  resources :comments, only: [:create , :destroy]
   resources :activities, only: [:index, :create]
   resources :likes, only: [:create, :destroy]
 end

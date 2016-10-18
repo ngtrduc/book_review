@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         SendEmailWorker.perform_async @comment.id
-        flash[:success] = t "comments.success"
         format.html{redirect_to :back}
         format.json{
           render json: {comment: @comment, user: @user, status: :created}
@@ -18,9 +17,18 @@ class CommentsController < ApplicationController
     end
   end
 
-  def delete
-    @comment = Comment.find_by(params[:id])
-    @comment.destroy
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    #review = Review.find(@comment.review_id)
+    if @comment.destroy
+
+      respond_to do |format|
+
+        format.html { redirect_to :back }
+        format.js
+      end
+    end
   end
 
   private
