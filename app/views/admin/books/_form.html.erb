@@ -1,5 +1,5 @@
 <div class="row">
-  <%= form_for [:admin, @book] do |f| %>
+  <%= form_for [:admin, @book] ,html: { multipart: true } do |f| %>
     <div class="col-md-12">
     <%= render "shared/error_messages", object: @book %>
 
