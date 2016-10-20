@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get "/:relationship", :to => "relationships#index", :as => :relationships
+      get "/relationship", :to => "relationships#index", :as => :relationships
     end
   end
   resources :books
