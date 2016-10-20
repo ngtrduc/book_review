@@ -18,10 +18,11 @@ $(document).on 'ready page:change', ->
         if result.status == "created"
           html_comment = '<div class="comments">'
           html_comment += '<div class="comments">'
-          html_comment += '<li id="comment-' + result.comment.id + ' %>">'
+          html_comment += '<li id="comment-' + result.comment.id + '">'
           html_comment += '<a href="/users/10"><img src="/assets/user_3.png" alt="User 3" width="50" height="50"></a>'
           html_comment += '<span class="user"><a href="/users/10">' + result.user.name + '</a></span>'
           html_comment += '<span class="content">' + result.comment.content + '</span>'
+          html_comment += '<span class="glyphicon glyphicon-remove"><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" data-remote="true" href="/comments/'+result.comment.id+'">delete</a></span>'
           html_comment += '</li>'
           html_comment += '</div>'
           $('.reviews_comments').append html_comment
