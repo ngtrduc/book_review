@@ -5,8 +5,9 @@
       <li><%= link_to t(:home), books_path %></li>
       <li><%= t "books.category" %></li>
       <li class="active"><%= @book.category.name %></li>
+
     </ul>
-    <div class="review-rating" data-score="<%= @book.rate_avg %>"></div>
+    <%= rating_for @book, "title", enable_half: true %>
     <hr>
   </div>
   <div class="row">

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
       omniauth_providers: [:facebook, :google_oauth2]
+  ratyrate_rater
 
   enum role: [:admin, :user]
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
