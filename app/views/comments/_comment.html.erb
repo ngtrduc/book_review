@@ -1,7 +1,7 @@
 <% if comment.present? %>
   <div class="comments">
     <li id="comment-<%= comment.id %>">
-      <%= link_to image_tag(Settings.users.url, size: Settings.users.size),
+      <%= link_to image_tag(comment.user.avatar, size: Settings.users.size),
         comment.user %>
       <span class="user"><%= link_to comment.user.name, comment.user %></span>
       <span class="content"><%= comment.content %></span>
@@ -10,7 +10,7 @@
         <%= time_ago_in_words comment.created_at %>
         <%= t "comments.ago" %>
       </span>
-      <% if current_user.id ==comment.user_id || current_user.role ==0 %>
+      <% if current_user.id ==comment.user_id || current_user.role == "admin" %>
         <span class="glyphicon glyphicon-remove"><%= link_to "delete", comment_path(comment),data: { confirm: "Are you sure?" }, method: :delete ,remote: true%></span>
       <% end %>
     </li>

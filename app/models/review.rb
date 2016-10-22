@@ -4,7 +4,7 @@ class Review < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :book
-
+  validates :book_id, uniqueness: { scope: :user_id}
   has_many :comments, dependent: :destroy
 
   validates :content, presence: true
