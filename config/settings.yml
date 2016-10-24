@@ -1,0 +1,43 @@
+per_page: 12
+accept_request: 2
+books:
+  page: 10
+  size: "200x250"
+  size2: "350x400"
+  url: "/assets/dac-nhan-tam.jpg"
+  marked_book:
+    reading: 0
+    read: 1
+    favorite: true
+admin:
+  books:
+    page: 10
+    size: "150x150"
+    url: "/assets/dac-nhan-tam.jpg"
+    pic_size: 5
+  detail_width: "100%"
+  users:
+    size: "70x70"
+    url: "assets/avata.jpg"
+users:
+  size: "50x50"
+  size_ava: "100x100"
+  url: "/assets/user_3.png"
+  pic_size: 5
+reviews:
+  page: 5
+favorites:
+  page: 2
+  size: "100x100"
+activity:
+  trackable:
+    review:
+      content: "reviewed a book "
+    comment:
+      content: "commented a review "
+    mark:
+      content: "marked a book "
+    like:
+      content: "liked a activity "
+    relationship:
+      content: "has relationship"

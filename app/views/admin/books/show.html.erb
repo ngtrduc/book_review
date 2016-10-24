@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <h3><%= t "admin.books.table.title" %> <%= @book.title %></h3>
+    <p> <%= t "admin.books.table.description" %> <%= @book.description %> </p>
+    <p> <%= t "admin.books.table.author" %> <%= @book.author %> </p>
+    <p> <%= t "admin.books.table.publish_date" %> <%= @book.publish_date %> </p>
+    <p> <%= t "admin.books.table.number_page" %> <%= @book.number_page %> </p>
+    <p> <%= t "admin.books.table.rate_avg" %> <%= @book.rate_avg %> </p>
+    <br>
+    <% if @book.picture.present? %>
+      <%= link_to image_tag(@book.picture, size: Settings.admin.books.size),
+        admin_books_path %>
+    <% else %>
+      <%= link_to image_tag(Settings.admin.books.url,
+        size: Settings.admin.books.size), admin_books_path %>
+    <% end %>
+  </div>
+  <br>
+  <%= link_to t("admin.books.edit.edit"), edit_admin_book_path(@book),
+    class: "btn btn-primary" %> |
+  <%= link_to t("admin.books.edit.back"), admin_book_path,
+    class: "btn btn-primary" %>
+</div>

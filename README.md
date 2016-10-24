@@ -1,10 +1,9 @@
-# README
+# book review 
+member:
+1. Nguyen Xuan Hai	
+2. Nguyen Trung Duc
+3. Le Phan Cong Hieu
+4. Dang Manh Chuan
+5. Nguyen Quang Duong
+6. To Van Hai
 
-This is website of my team - badboy
-
-This website review the place for traveling by bike or homestay as well.
-
-
-* Ruby version 2.2.3
-
-* Rails version 5.0.0

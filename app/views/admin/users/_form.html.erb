@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:admin, @user] do |f| %>
+      <%= render "shared/error_messages", object: @user %>
+      <%= f.text_field :name,placeholder: "Name", class: "form-control" %>
+      <%= f.email_field :email,placeholder: "Email..", class: "form-control" %>
+      <%= f.password_field :password,placeholder: "Password", class: "form-control" %>
+      <%= f.password_field :password_confirmation,placeholder: "Password Confirmation", class: "form-control" %>
+      <span class="form-group avatar">
+        <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png" %>
+      </span>
+
+      <div class="form-group">
+        <%= f.submit t(:submit), class: "btn btn-primary" %>
+      </div>
+
+      <div class="form-group">
+        <%= link_to t(". back"), admin_users_path, class: "btn btn-primary" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

@@ -1,4 +1,10 @@
-class Relationship < ApplicationRecord
-  belongs_to :follower, class_name: "User"
-  belongs_to :followed, class_name: "User"
+class Relationship < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: -> (controller, model){controller && controller.current_user}
+
+  belongs_to :follower, class_name: User.name
+  belongs_to :followed, class_name: User.name
+
+  validates :follower, presence: true
+  validates :followed, presence: true
 end

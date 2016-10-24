@@ -1,0 +1,299 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "social-share-button";
+
+/* mixins, variables, etc. */
+
+$gray-medium-light: #eaeaea;
+
+$size: 24px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
+}
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.title {
+  margin-bottom: 40px;
+}
+
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+input.btn.btn-primary {
+    margin-top: 15px;
+}
+
+/* forms */
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+/* Admin books */
+#btntop{
+  float: right;
+  width: 180px;
+ }
+#btntop a {
+  position: fixed;
+  bottom: 450px;
+  right: 5px;
+  z-index: 99;
+}
+/* Ket thuc Admin books */
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+  list-style: none;
+}
+#space{
+ height: 20px;
+}
+
+.comments {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 50px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 50px;
+    font-style: italic;
+  }
+  .avatar {
+    float: left;
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+}
+
+/* like */
+.like{
+  width: 60px;
+}
+/* end like */
+
+/* book */
+.reading{
+  width: 100px;
+  text-color: black;
+}
+
+.readed{
+  width: 100px;
+  text-color: black;
+}
+
+.favorite{
+  width: 100px;
+  text-color: black;
+}
+
+
+/* end book */
+/*signup login */
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    /*background-image: url(background.jpg);*/
+    background-size: cover;
+}
+/***** Top content *****/
+.inner-bg {
+    padding: 40px 0 0 0;
+}
+.form-top {
+  padding: 0 25px 0 25px;
+  text-align: center;
+}
+.form-bottom {
+  padding: 25px 25px 25px 25px;
+  text-align: left;
+}
+.social-login {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.social-login h3 {
+  color: #fff;
+}
+.avatar-size{
+  width: 40px;
+  height: 23px;
+}

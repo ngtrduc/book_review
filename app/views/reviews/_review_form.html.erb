@@ -1,0 +1,17 @@
+<%= form_for review  do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.hidden_field :book_id, value: @book.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :rating, value: 0 %>
+  <br>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating, class: "form-control", placeholder:
+    t("reviews.input_rate"), required: true %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content, class: "form-control", required: true, rows: 15 %><br>
+
+  <%= f.submit t "reviews.review_form.submit", class: "btn btn-primary" %>
+<% end %>
+<br>

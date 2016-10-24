@@ -1,0 +1,50 @@
+<div id="btntop" style="display: hidden;">
+  <a href="#top" id="top">
+    <span>
+      <%= link_to t("admin.users.add"), new_admin_user_path,
+        class: "btn btn-md btn-primary" %>
+    </span>
+  </a>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th><%= t "admin.users.table.id" %></th>
+      <th><%= t "admin.users.table.name" %></th>
+      <th><%= t "admin.users.table.email" %></th>
+      <th><%= t "admin.users.table.password" %></th>
+      <th><%= t "admin.users.table.avatar" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password %></td>
+        <td>
+          <% if user.avatar.present? %>
+            <%= link_to image_tag(user.avatar, size: Settings.admin.users.size),
+              admin_books_path %>
+          <% else %>
+            <%= link_to image_tag(Settings.admin.users.url, size: Settings.admin.users.size), admin_users_path %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to t("admin.users.table.show"), admin_user_path(user),
+            class: "btn btn-primary" %>
+          <%= link_to t("admin.users.table.edit"), edit_admin_user_path(user),
+            class: "btn btn-primary" %>
+            <% if user.role != "admin" %>
+              <%= link_to t("admin.users.table.delete"), admin_user_path(user), method: :delete, data: {confirm: t("admin.messages.confirm")},class: "btn btn-danger" %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @users %>
+<%= page_entries_info @users %>

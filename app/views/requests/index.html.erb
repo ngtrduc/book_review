@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <%= link_to t("requests.table.add_request"), new_request_path,
+    class: "btn btn-primary" %>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= t "requests.table.index" %></th>
+          <th><%= t "requests.table.content" %></th>
+          <th><%= t "requests.table.create_at" %></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="requests-body">
+        <%= render "request" %>
+      </tbody>
+    </table>
+    <%= paginate @requests %>
+    <%= page_entries_info @requests %>
+  </div>
+</div>

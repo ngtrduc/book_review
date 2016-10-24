@@ -1,13 +1,12 @@
 <footer class="footer">
   <small>
-    The <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    by <a href="http://www.michaelhartl.com/">Michael Hartl</a>
+    <%= t :app_name %>
+    <%= t "Badboy" %>
   </small>
   <nav>
     <ul>
-      <li><%= link_to "About", static_pages_about_path %></li>
-      <li><%= link_to "Contact", static_pages_contact_path %></li>
-      <li><a href="http://news.railstutorial.org/">News</a></li>
+      <li><%= link_to t(:about), "#" %></li>
+      <li><%= link_to t(:contact), "#" %></li>
     </ul>
   </nav>
 </footer>

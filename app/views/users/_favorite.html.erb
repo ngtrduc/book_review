@@ -1,0 +1,22 @@
+<div class = "favorite_books" >
+  <p><span> <%= t("users.list_favorite_books")%> </span></p>
+  <div id="list_book">
+    <% @favorite_books.each do |favorite_book| %>
+      <li class="list-group-item list-group-item-info">
+        <% if favorite_book.picture.present? %>
+          <%= link_to image_tag(favorite_book.picture, size: Settings.favorites.size),
+            favorite_book %>
+        <% else %>
+          <%= link_to image_tag(Settings.admin.books.url,
+            size: Settings.favorites.size), admin_books_path %>
+        <% end %>
+        <%= link_to favorite_book.title, favorite_book %>
+        <br/>
+      </li>
+    <% end %>
+  </div>
+  <div class="page">
+    <%= paginate @favorite_books %>
+    <%= page_entries_info @favorite_books %>
+  </div>
+</div>

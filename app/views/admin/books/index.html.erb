@@ -1,0 +1,62 @@
+<div id="btntop" style="display: hidden;">
+  <a href="#top" id="top">
+    <span>
+      <%= link_to t("admin.books.add"), new_admin_book_path,
+        class: "btn btn-md btn-primary" %>
+    </span>
+  </a>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr class="info">
+      <th><%= t "admin.books.table.id" %></th>
+      <th><%= t "admin.books.table.picture" %></th>
+      <th><%= t "admin.books.table.title" %></th>
+      <th><%= t "admin.books.table.description" %></th>
+      <th><%= t "admin.books.table.author" %></th>
+      <th><%= t "admin.books.table.publish_date" %></th>
+      <th><%= t "admin.books.table.number_page" %></th>
+      <th><%= t "admin.books.table.rate_avg" %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.id %></td>
+        <td>
+          <% if book.picture.present? %>
+            <%= link_to image_tag(book.picture, size: Settings.admin.books.size),
+              admin_books_path %>
+          <% else %>
+            <%= link_to image_tag(Settings.admin.books.url,
+              size: Settings.admin.books.size), admin_books_path %>
+          <% end %>
+        </td>
+        <td><%= link_to book.title, admin_book_path(book) %></td>
+        <td><%= book.description.truncate(50) %></td>
+        <td><%= book.author %></td>
+        <td><%= book.publish_date %></td>
+        <td><%= book.number_page %></td>
+
+        <% if book.rate_avg %>
+          <td>
+            <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
+          </td>
+        <% end %>
+        <td>
+          <%= link_to t("admin.books.table.show"), admin_book_path(book),
+            class: "btn btn-primary" %>
+          <%= link_to t("admin.books.table.edit"), edit_admin_book_path(book),
+            class: "btn btn-warning" %>
+          <%= link_to t("admin.books.table.delete"), admin_book_path(book),
+            method: :delete, data: {confirm: t("admin.messages.confirm")},
+            class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @books %>
+<%= page_entries_info @books %>
