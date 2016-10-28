@@ -7,8 +7,7 @@
     </div>
 
     <div class="field1">
-      <%= f.label :rate %>
-      <%= f.text_field :rate_avg_eq, class: "form-control" %>
+      <%= f.label :rate_avg %>
     </div>
 
     <div class="field1">
@@ -20,6 +19,7 @@
     <div class="actions1"><%= f.submit t(".search"), class: "btn btn-primary" %></div>
   <% end %>
 </div>
+
 <div class="section group">
   <br>
   <% @books.each do |book| %>

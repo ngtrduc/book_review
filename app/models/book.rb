@@ -1,5 +1,4 @@
 class Book < ActiveRecord::Base
-  ratyrate_rateable "title"
 
   belongs_to :category
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
