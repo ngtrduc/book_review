@@ -2,9 +2,7 @@
   <div id="sub_review">
     <h4 class="display_inline"><strong><%= review.user.name %></strong></h4>
 
-    <div class="show-rating-review">
-      <%= t("reviews.rate")%>
-      <%= review.rating %>
+    <div id="review-rating" data-score="<%= review.rating %>">
     </div>
     <p><%= t("reviews.content")%> <%= review.content %></p>
     <p class="text-left display_inline">
