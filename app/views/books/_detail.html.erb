@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-6 col-md-5">
+  <div class="col-xs-12 col-sm-5">
     <% if @book.picture.present? %>
-      <%= link_to image_tag(@book.picture, size: Settings.books.size2), @book %>
+      <%= link_to image_tag(@book.picture, size: Settings.books.size2), @book, class: "book-image" %>
     <% else %>
-      <%= link_to image_tag(Settings.books.url, size: Settings.books.size2), @book %>
+      <%= link_to image_tag(Settings.books.url, size: Settings.books.size2), @book, class: "book-image" %>
     <% end %>
   </div>
-  <div class="col-xs-12 col-sm-6 col-md-7">
+  <div class="col-xs-12 col-sm-6">
     <div class="title">
       <h2><b><%= @book.title %></b></h2>
     </div>

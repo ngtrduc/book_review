@@ -46,13 +46,11 @@
           </td>
         <% end %>
         <td>
-          <%= link_to t("admin.books.table.show"), admin_book_path(book),
-            class: "btn btn-primary" %>
           <%= link_to t("admin.books.table.edit"), edit_admin_book_path(book),
             class: "btn btn-warning" %>
           <%= link_to t("admin.books.table.delete"), admin_book_path(book),
-            method: :delete, data: {confirm: t("admin.messages.confirm")},
-            class: "btn btn-danger" %>
+              method: :delete, data: {confirm: t("admin.messages.confirm")},
+              class: "btn btn-danger" %>
         </td>
       </tr>
     <% end %>
