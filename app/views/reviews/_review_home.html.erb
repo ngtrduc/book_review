@@ -1,0 +1,10 @@
+<li>
+  <article>
+    <header>
+      <h3><%= review.content %></h3>
+      <h4 class="author">In <%= link_to review.book.title, review.book %></h4>
+      <time class="published" datetime="2015-10-20"><%= review.created_at %></time>
+    </header>
+    <%= link_to image_tag(review.user.avatar), review.user, class: "image" %>
+  </article>
+</li>

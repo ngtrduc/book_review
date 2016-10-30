@@ -11,6 +11,7 @@ class Review < ActiveRecord::Base
   validate :check_rating
 
   scope :order_reviews, ->{order created_at: :DESC}
+  scope :random_reviews, ->{order("RANDOM()").limit 5}
   after_create :update_book_rate_avg
 
   private
