@@ -1,5 +1,4 @@
-class Admin::RequestsController < ApplicationController
-  load_and_authorize_resource
+class Admin::RequestsController < Admin::BaseController
   before_action :authenticate_user!
 
   def index
