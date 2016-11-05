@@ -7,10 +7,10 @@
     <p><%= t("reviews.content")%> <%= review.content %></p>
     <p class="text-left display_inline">
       <em>
-        <%= t "reviews.created_by" %>
+        <%= "Posted by" %>
         <%= link_to review.user.name, review.user %>
-        <%= t "reviews.created_at" %>
-        <%= review.created_at %>
+        <%= time_ago_in_words(review.created_at) %>
+        <%= "ago."%>
       </em>
     </p>
     <p>
@@ -29,5 +29,3 @@
   </br>
   </div>
 </div>
-<%= paginate @reviews %>
-<%= page_entries_info @reviews %>

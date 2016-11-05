@@ -1,8 +1,9 @@
 <li>
   <article>
     <header>
-      <h3><%= review.content %></h3>
-      <h4 class="author">In <%= link_to review.book.title, review.book %></h4>
+      <span><i><%= review.content %></i></span>
+      <br/>
+      <span class="name">In <%= link_to review.book.title, review.book %></span>
       <time class="published" datetime="2015-10-20">
         Posted <%= time_ago_in_words(review.created_at) %> ago.</time>
     </header>

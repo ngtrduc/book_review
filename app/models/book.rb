@@ -28,7 +28,7 @@ class Book < ActiveRecord::Base
   end
 
   scope :random_book, -> do
-    order("RANDOM()").limit(4)
+    order("RANDOM()").limit(3)
   end
 
   def marked_reading? current_user

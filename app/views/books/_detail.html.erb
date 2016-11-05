@@ -1,10 +1,6 @@
 <div class="row">
   <div class="col-xs-12 col-sm-5">
-    <% if @book.picture.present? %>
-      <%= link_to image_tag(@book.picture, size: Settings.books.size2), @book, class: "book-image" %>
-    <% else %>
-      <%= link_to image_tag(Settings.books.url, size: Settings.books.size2), @book, class: "book-image" %>
-    <% end %>
+    <%= link_to image_tag(@book.picture, size: Settings.books.size2), @book, class: "book-image" %>
     <hr style="width: 80%">
     <h3>Average Rating: </h3>
     <div class="average-review-rating" data-score=<%= @book.rate_avg %>></div>

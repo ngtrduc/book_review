@@ -19,11 +19,7 @@
     <br>
     <% @books.each do |book| %>
       <div class ="row1">
-        <% if book.picture.present? %>
-          <%= link_to image_tag(book.picture, size: Settings.books.size), book, class: "book-image center" %>
-        <% else %>
-          <%= link_to image_tag(Settings.books.url, size: Settings.books.size), book, class: "book-image center" %>
-        <% end %>
+        <%= link_to image_tag(book.picture, size: Settings.books.size_index), book, class: "book-image center" %>
         <label style="text-align: center"><%= link_to book.title, book_path(book) %></label>
         <p class="book-detail"><%= t ("books.author") %> <%= book.author %></p>
         <p class="book-detail">
