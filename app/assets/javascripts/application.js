@@ -18,3 +18,9 @@
 //= require social-share-button
 //= require jquery.raty
 //= require ratyrate
+
+var make_select_box = function(){
+  $('.select-category').niceSelect();
+}
+$(document).ready(make_select_box);
+$(document).on('page:load', make_select_box);

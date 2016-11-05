@@ -6,7 +6,7 @@ class CreateBooks < ActiveRecord::Migration
       t.date :publish_date
       t.string :author
       t.string :number_page
-      t.float :rate_avg, defaulf: 0
+      t.float :rate_avg, default: 0
       t.references :category, index: true, foreign_key: true
 
       t.timestamps null: false

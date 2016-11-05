@@ -1,4 +1,4 @@
-class Admin::BooksController < ApplicationController
+class Admin::BooksController < Admin::BaseController
   load_and_authorize_resource
   before_action :load_category, only: [:new, :edit, :update]
 

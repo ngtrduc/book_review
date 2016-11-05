@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid well boxshadow">
   <div class="row">
     <hr>
     <ul class="breadcrumb">
@@ -7,12 +7,10 @@
       <li class="active"><%= @book.category.name %></li>
 
     </ul>
-    <%= rating_for @book, "title", enable_half: true %>
     <hr>
   </div>
-  <div class="row">
-    <%= render "detail" %>
-  </div>
+  <%= render "detail" %>
+  <hr>
   <div class="row">
     <div class="col-md-5">
       <div class="new_review">

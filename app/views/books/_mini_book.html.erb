@@ -1,0 +1,14 @@
+<article class="mini-post">
+  <header>
+    <h3><%= link_to book.title, book_path(book) %></h3>
+    <time class="published" datetime="2015-10-20">By <%= book.author %></time>
+    <p>
+      <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
+    </p>
+  </header>
+  <% if book.picture.present? %>
+    <%= link_to image_tag(book.picture, size: Settings.books.size), book, class: "image" %>
+  <% else %>
+    <%= link_to image_tag(Settings.books.url, size: Settings.books.size), book, class: "image" %>
+  <% end %>
+</article>

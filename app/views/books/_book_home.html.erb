@@ -1,0 +1,41 @@
+<article class="post">
+  <header>
+    <div class="title">
+      <h2><%= link_to book.title, book_path(book) %></h2>
+      <p style="text-align: center">
+        Rating:
+        <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
+      </p>
+    </div>
+    <div class="meta">
+      <span>Publish Date</span>
+      <time class="published" datetime="2015-11-01"><%= book.publish_date %></time>
+      <a href="#" class="author"><span class="name">By <%= book.author %>.</span></a>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <% if book.picture.present? %>
+        <%= link_to image_tag(book.picture, size: Settings.books.size), book, class: "book-image " %>
+      <% else %>
+        <%= link_to image_tag(Settings.books.url, size: Settings.books.size), book, class: "book-image" %>
+      <% end %>
+    </div>
+  </div>
+
+
+  <p><%= book.description %></p>
+  <footer>
+    <ul class="actions">
+      <li><%= link_to "See Detail", book_path(book), class: "button big" %></li>
+    </ul>
+    <ul class="stats">
+      <li><a href="#">Favorites & Reviews</a></li>
+      <li><a href="#" ><%= book.favorites.count %>
+        <span class="glyphicon glyphicon-heart"></span></a></li>
+      <li><a href="#" class="icon fa-comment"><%= book.reviews.count %>
+        <span class="glyphicon glyphicon-pencil"></span></a></li>
+    </ul>
+  </footer>
+</article>
