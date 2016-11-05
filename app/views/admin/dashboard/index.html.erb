@@ -3,12 +3,12 @@
     <div class="small-box bg-yellow">
       <div class="inner">
         <h3><%= @users.count %></h3>
-        <p><%= t "admin.user_register" %></p>
+        <p>User Registers</p>
       </div>
       <div class="icon">
         <i class="fa fa-user-plus"></i>
       </div>
-      <%= link_to t(:more_info), admin_users_path, class: "small-box-footer" %>
+      <%= link_to "More info", admin_users_path, class: "small-box-footer" %>
     </div>
   </div>
 </div>

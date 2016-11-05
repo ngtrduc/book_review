@@ -2,7 +2,7 @@ class Book < ActiveRecord::Base
 
   belongs_to :category
   has_attached_file :picture, styles: {medium: "300x300>", thumb: "100x100>"},
-    default_url: "/images/book/dac-nhan-tam.jpg"
+    default_url: "book/dac-nhan-tam.jpg"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
   has_many :marks, dependent: :destroy
   has_many :favorites, dependent: :destroy

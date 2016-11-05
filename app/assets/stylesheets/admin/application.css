@@ -12,6 +12,7 @@
  *
  *= require bootstrap-datetimepicker
  *= require adminlte
+ *= require skin-blue
  *= require_tree .
  *= require_self
  */
