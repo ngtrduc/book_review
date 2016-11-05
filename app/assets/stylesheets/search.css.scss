@@ -2,7 +2,7 @@
   height: 40px !important;
   margin-top: 5px;
   margin-bottom: 5px;
-  width: 250px;
+  width: 300px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -17,7 +17,7 @@
 
 /* When the input field gets focus, change its width to 100% */
 #search-box:focus {
-    width: 400px;
+    width: 500px;
 }
 
 .search-icon {

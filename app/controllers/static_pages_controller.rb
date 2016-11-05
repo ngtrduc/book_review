@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     @books = Book.order("rate_avg DESC").page params[:page]
     @mini_books = Book.random_book
     @reviews = Review.random_reviews.includes(:user)
+    @request = Request.new
   end
 
   def help
