@@ -9,12 +9,11 @@
     </div>
     <div class="meta">
       <span>Publish Date</span>
-      <time class="published" datetime="2015-11-01"><%= book.publish_date %></time>
-      <a href="#" class="author"><span class="name">By <%= book.author %>.</span></a>
+      <time class="published" datetime="<%= book.publish_date %>"><%= book.publish_date %></time>
+      <span class="name">By <a href="#"><%= book.author %></a></span>
     </div>
   </header>
   <div class="row">
-    <div class="col-md-4"></div>
     <div class="col-md-4">
       <% if book.picture.present? %>
         <%= link_to image_tag(book.picture, size: Settings.books.size), book, class: "book-image " %>
@@ -22,10 +21,14 @@
         <%= link_to image_tag(Settings.books.url, size: Settings.books.size), book, class: "book-image" %>
       <% end %>
     </div>
+    <div class="col-md-6 col-sm-offset-1" >
+      <h4>Description</h4>
+      <p style="font-family: sans-serif;font-size: 80%;"><i><%= book.description %></i></p>
+    </div>
   </div>
 
 
-  <p><%= book.description %></p>
+
   <footer>
     <ul class="actions">
       <li><%= link_to "See Detail", book_path(book), class: "button big" %></li>
