@@ -3,8 +3,8 @@ class BooksController < ApplicationController
   before_action :load_categories, only: [:index]
 
   def index
-    @search = Book.search params[:q]
-    @books = @search.result.page(params[:page]).per Settings.per_page
+    @q = Book.search params[:q]
+    @books = @q.result.page(params[:page]).per Settings.per_page
   end
 
   def show

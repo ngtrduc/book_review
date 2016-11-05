@@ -5,6 +5,10 @@
     <% else %>
       <%= link_to image_tag(Settings.books.url, size: Settings.books.size2), @book, class: "book-image" %>
     <% end %>
+    <hr style="width: 80%">
+    <h3>Average Rating: </h3>
+    <div class="average-review-rating" data-score=<%= @book.rate_avg %>></div>
+    <span>Based on <%= @book.reviews.count %> reviews.</span>
   </div>
   <div class="col-xs-12 col-sm-6">
     <div class="title">
@@ -12,11 +16,9 @@
     </div>
 
     <div class="description">
-      <h3>Average Rating: </h3>
-      <div class="average-review-rating" data-score=<%= @book.rate_avg %>></div>
-      <span>Based on <%= @book.reviews.count %> reviews.</span>
       <h3><span><%= t "books.description" %></span></h3>
       <p><%= @book.description %></p>
+      <p class="published"> Number of page: <%= @book.number_page %></p>
     </div>
     <div id="form-btn-mark">
       <%= render "mark_button" %>

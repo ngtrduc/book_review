@@ -24,6 +24,12 @@ gem "whenever", require: false
 gem "sdoc",         "0.4.0", group: :doc
 gem "public_activity"
 gem "social-share-button"
+gem "momentjs-rails"
+gem "datetimepicker-rails", github: "zpaulovics/datetimepicker-rails",
+  branch: "master", submodules: true
+source "https://rails-assets.org/" do
+  gem "rails-assets-adminlte"
+end
 
 group :development, :test do
   gem "sqlite3",     "1.3.9"

@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   root "static_pages#home"
   get "static_pages/help"
   get "static_pages/about"
-  get "search" => "static_pages#search"
 
   namespace :admin do
-    root "categories#index"
+    root "dashboard#index"
     resources :categories
     resources :books
     resources :requests, only: [:index, :update]
