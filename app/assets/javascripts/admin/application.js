@@ -13,9 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require dataTables/jquery.dataTables
 //= require turbolinks
 //= require_tree .
 //= require adminlte
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+var dataTab = function() {
+  $('#data_table').DataTable();
+}
+$(document).ready(dataTab);
+$(document).on('page:load', dataTab);

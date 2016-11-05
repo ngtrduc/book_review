@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
@@ -24,3 +25,9 @@ var make_select_box = function(){
 }
 $(document).ready(make_select_box);
 $(document).on('page:load', make_select_box);
+
+var dataTab = function() {
+  $('#data_table').DataTable();
+}
+$(document).ready(dataTab);
+$(document).on('page:load', dataTab);

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     root "dashboard#index"
     resources :categories
     resources :books
-    resources :requests, only: [:index, :update]
+    resources :requests, only: [:index, :update, :destroy]
     resources :users
   end
 

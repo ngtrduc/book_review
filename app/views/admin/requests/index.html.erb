@@ -8,7 +8,7 @@
       <th><%= t "admin.requests.table.content" %></th>
       <th><%= t "admin.requests.table.status" %></th>
       <th><%= t "admin.requests.table.user" %></th>
-      <th></th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -27,16 +27,14 @@
         </td>
         <td><%= link_to request.user.name, "#" %></td>
         <td>
-          <%= link_to t("admin.requests.table.edit"), "#",
-            class: "btn btn-primary" %>
-          <%= link_to t("admin.requests.table.delete"), "#",
+          <%= link_to "", admin_request_path(request[:id]),
             method: :delete, data: {confirm: t("admin.messages.confirm")},
-            class: "btn btn-danger" %>
+            class: "glyphicon glyphicon-remove" %>
         </td>
         <td>
           <% if request.waitting? %>
             <%= link_to t("admin.requests.sent_email"),
-              admin_request_path(request[:id]), method: :put, class: "btn btn-primary" %>
+              admin_request_path(request), method: :delete, class: "btn btn-primary" %>
           <% end %>
         </td>
       </tr>
