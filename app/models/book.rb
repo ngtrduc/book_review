@@ -9,10 +9,11 @@ class Book < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
 
   validates :title, presence: true
-  validates :description, presence: true, length: {maximum: 150}
+  validates :description, presence: true, length: {maximum: 500}
   validates :publish_date, presence: true
   validates :author, presence: true
   validates :number_page, presence: true
+  paginates_per 4
 
   scope :mark_book, -> (book,current_user) do
     joins(:marks).where(:marks, {user_id: current_user.id, book_id: book.id})

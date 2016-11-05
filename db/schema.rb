@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20161019182601) do
     t.date     "publish_date"
     t.string   "author"
     t.string   "number_page"
-    t.float    "rate_avg"
+    t.float    "rate_avg",             default: 0.0
     t.integer  "category_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
