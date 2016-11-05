@@ -14,5 +14,14 @@ class Admin::RequestsController < Admin::BaseController
     end
       redirect_to admin_requests_path
   end
+  def destroy
+    @request = Request.find(params["id"])
+    if @request.destroy
+      flash[:success] = t "application.flash.user_requests.destroy_success"
+    else
+      flash[:error] = t "application.flash.user_requests.destroy_fail"
+    end
+    redirect_to admin_requests_path
+  end
 
 end

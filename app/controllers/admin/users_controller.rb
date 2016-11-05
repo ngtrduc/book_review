@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @users = User.includes(:reviews).page(params[:page]).per Settings.per_page
+    @users = User.includes(:reviews)
   end
 
   def new

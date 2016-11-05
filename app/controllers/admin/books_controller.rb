@@ -3,7 +3,7 @@ class Admin::BooksController < Admin::BaseController
   before_action :load_category, only: [:new, :edit, :update]
 
   def index
-    @books = Book.page(params[:page]).per Settings.admin.books.page
+    @books = Book.all
   end
 
   def new

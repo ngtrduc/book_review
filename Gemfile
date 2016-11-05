@@ -20,6 +20,7 @@ gem "turbolinks",   "2.3.0"
 gem "jbuilder",     "2.2.3"
 gem "config"
 gem 'faker',          '1.6.6'
+gem 'jquery-datatables-rails', '~> 3.4.0'
 gem "ransack"
 gem "whenever", require: false
 gem "sdoc",         "0.4.0", group: :doc

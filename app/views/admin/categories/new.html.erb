@@ -1,14 +1,15 @@
 <% provide :title, t("admin.categories.add") %>
-<h1><%= t "admin.categories.add" %></h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+<h1 style="text-align: center;"><%= t "admin.categories.add" %></h1>
+<div class="row ">
+  <div class="col-md-6 col-md-offset-3 well">
     <%= form_for [:admin, @category] do |f| %>
       <%= render "shared/error_messages", object: @category %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control" %>
-
-      <%= f.submit t("admin.categories.create"), class: "btn btn-primary" %>
+      <%= f.submit t("admin.categories.create"), class: "btn btn-primary form-control" %>
     <% end %>
   </div>
 </div>

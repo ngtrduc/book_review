@@ -1,7 +1,7 @@
 class Admin::CategoriesController < Admin::BaseController
   load_and_authorize_resource
   def index
-    @categories = Category.page(params[:page]).per(Settings.per_page).
+    @categories = Category.all.
       order created_at: :desc
   end
 
@@ -34,6 +34,7 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def destroy
+    byebug
     @category.destroy
     flash[:success] = t "admin.categories.delete"
     redirect_to admin_categories_path

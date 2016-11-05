@@ -2,23 +2,25 @@
 <div class="title">
   <h1><%= t "admin.categories.all" %></h1>
 </div>
-  <table class="table table-striped">
-    <tr>
-      <th><%= t "admin.categories.category_name" %></th>
-      <th>Action</th>
-    </tr>
-    <% @categories.each do |category| %>
+  <table class="table table-hover" id="data_table">
+    <thead>
       <tr>
-        <td><%= link_to category.name, [:admin, category] %></td>
+        <th><%= t "admin.categories.category_name" %></th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+      <tr id="category-<%= category.id%>">
+        <td><%= category.name %></td>
         <td>
-          <%= link_to t("admin.categories.edit"), edit_admin_category_path(category),
-            class: "btn btn-sm btn-info" %>
-          <%= link_to t("admin.categories.remove"), admin_category_path(category),
+          <%= link_to "", edit_admin_category_path(category),
+            class: "glyphicon glyphicon-edit" %> |
+          <%= link_to "", admin_category_path(category),
             method: :delete, data: {confirm: t("admin.categories.sure")},
-            class: "btn btn-sm btn-danger" %>
+            class: "glyphicon glyphicon-remove" %>
         </td>
       </tr>
     <% end %>
+    </tbody>
   </table>
-<%= paginate @categories %>
-<%= page_entries_info @categories %>
