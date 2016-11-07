@@ -1,9 +1,5 @@
 <header class="main-header">
-  <a href="#" class="logo">
-    <span class="logo-mini"><b>BRS</b></span>
-    <span class="logo-lg"><b>Book Review System</b></span>
-  </a>
-
+  <%= link_to "Book Review System", admin_root_path,class: "logo" %>
   <nav class="navbar navbar-static-top" role="navigation">
     <a href="#" data-toggle="offcanvas" role="button">
       <span class="glyphicon glyphicon-header"></span>
@@ -13,6 +9,9 @@
     </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
+        <li>
+          <%= link_to "User mode", root_path %>
+        </li>
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <%= image_tag current_user.avatar.url, class: "user-image" %>

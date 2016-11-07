@@ -27,6 +27,7 @@ gem "sdoc",         "0.4.0", group: :doc
 gem "public_activity"
 gem "social-share-button"
 gem "momentjs-rails"
+gem "font-awesome-sass"
 gem "datetimepicker-rails", github: "zpaulovics/datetimepicker-rails",
   branch: "master", submodules: true
 source "https://rails-assets.org/" do

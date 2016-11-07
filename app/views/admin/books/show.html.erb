@@ -1,23 +1,22 @@
-<div class="container-fluid">
-  <div class="row">
-    <h3><%= t "admin.books.table.title" %> <%= @book.title %></h3>
-    <p> <%= t "admin.books.table.description" %> <%= @book.description %> </p>
-    <p> <%= t "admin.books.table.author" %> <%= @book.author %> </p>
-    <p> <%= t "admin.books.table.publish_date" %> <%= @book.publish_date %> </p>
-    <p> <%= t "admin.books.table.number_page" %> <%= @book.number_page %> </p>
-    <p> <%= t "admin.books.table.rate_avg" %> <%= @book.rate_avg %> </p>
+<div class="row">
+  <div class="col-xs-12 col-sm-5">
+    <%= image_tag @book.picture, size: Settings.books.size2, class: "book-image" %>
+    <hr style="width: 100%">
+    <h4>Rating </h4>
+    <div class="average-review-rating" data-score=<%= @book.rate_avg %>></div>
     <br>
-    <% if @book.picture.present? %>
-      <%= link_to image_tag(@book.picture, size: Settings.admin.books.size),
-        admin_books_path %>
-    <% else %>
-      <%= link_to image_tag(Settings.admin.books.url,
-        size: Settings.admin.books.size), admin_books_path %>
-    <% end %>
+    <%= link_to "", edit_admin_book_path(@book),class: "glyphicon glyphicon-edit" %> |
+    <%= link_to "", admin_book_path(@book),method: :delete, data: {confirm: t("admin.messages.confirm")},
+            class: "glyphicon glyphicon-remove" %>
   </div>
-  <br>
-  <%= link_to t("admin.books.edit.edit"), edit_admin_book_path(@book),
-    class: "btn btn-primary" %> |
-  <%= link_to t("admin.books.edit.back"), admin_book_path,
-    class: "btn btn-primary" %>
+  <div class="col-xs-12 col-sm-6">
+    <div class="title">
+      <h2><b><%= @book.title %></b></h2>
+    </div>
+    <div class="description">
+      <h3><span><%= t "books.description" %></span></h3>
+      <p><%= @book.description %></p>
+      <p class="published"> Number of page: <%= @book.number_page %></p>
+    </div>
+  </div>
 </div>

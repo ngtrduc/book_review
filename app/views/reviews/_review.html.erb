@@ -23,8 +23,10 @@
       <div class = "reviews_comments">
         <%= render review.comments %>
       </div>
-      <%= render "comments/comment_form",
-        comment: review.user.comments.build(review_id: review.id) %>
+      <% if user_signed_in?%>
+        <%= render "comments/comment_form",
+          comment: review.user.comments.build(review_id: review.id) %>
+      <% end %>
     </p>
   </br>
   </div>

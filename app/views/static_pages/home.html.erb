@@ -32,22 +32,22 @@
         <% end %>
       </ul>
     </section>
-
-    <section class="blurb">
-      <p>You want to tell us about our websites? Please request to us!!</p>
-      <h2>Requests</h2>
-      <%= form_for @request do |f| %>
-        <%= render "shared/error_messages", object: @request %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <div class="form-group">
-          <%= f.text_area :content, class: "form-control",
-            placeholder: t("requests.new.content"), rows: 10 %>
-        </div>
-        <ul class="actions">
-          <li><%= f.submit t("requests.new.sent"), class: "button" %></li>
-        </ul>
-      <% end %>
-    </section>
-
+    <%if user_signed_in?%>
+      <section class="blurb">
+        <p>You want to tell us about our websites? Please request to us!!</p>
+        <h2>Requests</h2>
+        <%= form_for @request do |f| %>
+          <%= render "shared/error_messages", object: @request %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <div class="form-group">
+            <%= f.text_area :content, class: "form-control",
+              placeholder: t("requests.new.content"), rows: 10 %>
+          </div>
+          <ul class="actions">
+            <li><%= f.submit t("requests.new.sent"), class: "button" %></li>
+          </ul>
+        <% end %>
+      </section>
+    <% end  %>
   </section>
 </div>

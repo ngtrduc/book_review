@@ -14,7 +14,10 @@
   <div class="row">
     <div class="col-md-5">
       <div class="new_review">
+      <% if user_signed_in?%>
         <%= render "reviews/review_form", review: @new_review %>
+      <% end %>
+      <p>&nbsp</p>
       </div>
     </div>
     <div class="col-md-1"></div>
