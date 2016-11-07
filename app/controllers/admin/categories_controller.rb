@@ -14,9 +14,9 @@ class Admin::CategoriesController < Admin::BaseController
   def create
     if @category.save
       flash[:success] = t "admin.categories.success"
-      redirect_to admin_root_url
+      redirect_to admin_categories_path
     else
-      flash[:danger] = t "admin.categories.fail"
+      flash[:danger] = "Category Is Extinct!"
       render :new
     end
   end
@@ -34,7 +34,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def destroy
-    byebug
     @category.destroy
     flash[:success] = t "admin.categories.delete"
     redirect_to admin_categories_path

@@ -2,6 +2,8 @@
 @import "bootstrap";
 @import "social-share-button";
 @import 'nice-select';
+@import "font-awesome-sprockets";
+@import "font-awesome";
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -331,4 +333,64 @@ body {
     left: 15%; /* one half of the remaining 30% */
     height: 100px;
     bottom: 0;
+}
+
+.dn-login-sns{
+  padding-top: 0px;
+}
+
+h2.dn-login-strike{
+  position: relative;
+  text-align: center;
+  color: #a8a8a8;
+  font-size: 13px;
+  font-style: italic;
+  font-weight: normal;
+  z-index: 1;
+  span{
+    background: #fff;
+    padding: 0 10px;
+  }
+}
+
+h2.dn-login-strike:before{
+  border-top: solid 1px #d8d8d8;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  right: 10px;
+  z-index: -1;
+}
+
+.dn-fb{
+  background: #4d6498;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 56px;
+  display: inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-left: 35%;
+}
+.dn-gm{
+  background: #42b1d5;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 26px;
+  line-height: 56px;
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 3%;
+}
+
+.login-background {
+  background-image: url("book-background.jpg");
+  background-size: 100%;
+}
+
+.dn-submit-login {
+  back-ground-color: #428bca !important;
 }

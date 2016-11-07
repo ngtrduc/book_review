@@ -20,11 +20,14 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
+            <li><%= link_to("Admin mode", admin_root_path) if current_user.admin? %></li>
             <li><%= link_to t(:home), root_path %></li>
             <li><%= link_to t("static_pages.header.my_actions"), user_path(current_user) %></li>
             <li><%= link_to t("static_pages.header.user"), users_path %></li>
             <li>
-              <%= link_to t("static_pages.header.my_requests"), requests_path %>
+              <% unless current_user.admin? %>
+                <%= link_to t("static_pages.header.my_requests"), requests_path %>
+              <% end %>
             </li>
             <li><%= link_to t(:book), books_path %></li>
             <li>

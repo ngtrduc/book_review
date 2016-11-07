@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-3 col-md-offset-3 col-xs-6">
+  <div class="col-md-3">
     <div class="small-box bg-yellow">
       <div class="inner">
         <h3><%= @users.count %></h3>
@@ -9,6 +9,42 @@
         <i class="fa fa-user-plus"></i>
       </div>
       <%= link_to "More info", admin_users_path, class: "small-box-footer" %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        <h3><%= @books.count %></h3>
+        <p>Book</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-user-plus"></i>
+      </div>
+      <%= link_to "More info", admin_books_path, class: "small-box-footer" %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        <h3><%= @category.count %></h3>
+        <p>Category</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-user-plus"></i>
+      </div>
+      <%= link_to "More info", admin_categories_path, class: "small-box-footer" %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="small-box bg-yellow">
+      <div class="inner">
+        <h3><%= @request.count %></h3>
+        <p>Request</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-user-plus"></i>
+      </div>
+      <%= link_to "More info", admin_requests_path, class: "small-box-footer" %>
     </div>
   </div>
 </div>

@@ -31,3 +31,9 @@ var dataTab = function() {
 }
 $(document).ready(dataTab);
 $(document).on('page:load', dataTab);
+
+function set_timeout() {
+  $('.alert').delay(3000).slideUp();
+}
+$(document).ready(set_timeout);
+$(document).on('page:load', set_timeout);
