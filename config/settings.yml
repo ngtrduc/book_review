@@ -26,6 +26,7 @@ users:
   size_ava: "100x100"
   url: "/assets/user_3.png"
   pic_size: 5
+  comment_size: "30x30"
 reviews:
   page: 4
 favorites:
