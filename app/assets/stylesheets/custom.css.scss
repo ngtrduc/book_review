@@ -151,14 +151,6 @@ input {
   height: auto !important;
 }
 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
 /* Admin books */
 #btntop{
   float: right;
@@ -214,36 +206,6 @@ input {
  height: 20px;
 }
 
-.comments {
-  list-style: none;
-  padding: 0;
-  li {
-    padding: 10px 0;
-  }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .content {
-    display: block;
-    margin-left: 50px;
-    img {
-      display: block;
-      padding: 5px 0;
-    }
-  }
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 50px;
-    font-style: italic;
-  }
-  .avatar {
-    float: left;
-    margin-left: 10px;
-    margin-top: 5px;
-  }
-}
 
 /* like */
 .like{
@@ -393,4 +355,28 @@ h2.dn-login-strike:before{
 
 .dn-submit-login {
   back-ground-color: #428bca !important;
+}
+
+h4 .user {
+  margin-bottom : 10px
+}
+
+.list-comment {
+  list-style: none;
+  margin-left: 30px;
+  .comment-content {
+    padding-left: 10%;
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 50px;
+    font-style: italic;
+    float: right
+  }
+}
+
+
+.right-conner {
+  float: right
 }

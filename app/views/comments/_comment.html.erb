@@ -1,19 +1,28 @@
-<div class="comments">
-  <li id="comment-<%= comment.id %>">
-    <%= link_to image_tag(comment.user.avatar, size: Settings.users.size),
-      comment.user %>
-    <span class="user"><%= link_to comment.user.name, comment.user %></span>
-    <span class="content"><%= comment.content %></span>
-    <span class="timestamp">
-      <%= t "comments.commented" %>
-      <%= time_ago_in_words comment.created_at %>
-      <%= t "comments.ago" %>
-    </span>
-    <% if user_signed_in? %>
-      <% if current_user.id ==comment.user_id || current_user.role == "admin" %>
-        <span class="glyphicon glyphicon-remove"><%= link_to "delete", comment_path(comment),data: { confirm: "Are you sure?" }, method: :delete ,remote: true%></span>
-      <% end %>
+<li id="comment-<%= comment.id %>" class= "well">
+  <%= link_to image_tag(comment.user.avatar, size: Settings.users.comment_size),
+    comment.user, class: "book-image" %>
+  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+  <% if user_signed_in? %>
+    <% if can? :destroy, comment %>
+      <span class="right-conner">
+        <%= link_to "", edit_comment_path(comment),
+          class: "glyphicon glyphicon-edit", remote: true %>
+        <%= link_to "", comment_path(comment),
+          data: { confirm: "Are you sure?" }, method: :delete ,
+          class: "glyphicon glyphicon-remove", remote: true %>
+      </span>
     <% end %>
-  </li>
-</div>
+  <% end %>
+  <p class="comment-content" id="comment-content-<%= comment.id %>"><%= comment.content %></p>
+  <%= form_for comment, html: {class: "edit-position hidden", id: "comment-form-#{comment.id}"},
+  remote: true do |f| %>
+    <%= f.text_field :content, class: "form-control" %>
+    <%= f.submit "update", class: "hidden" %>
+  <% end %>
+  <span class="timestamp">
+    <%= time_ago_in_words comment.created_at %>
+    <%= t "comments.ago" %>
+  </span>
+</li>
+
 

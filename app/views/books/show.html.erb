@@ -2,10 +2,14 @@
   <div class="row">
     <hr>
     <ul class="breadcrumb">
-      <li><%= link_to t(:home), books_path %></li>
-      <li><%= t "books.category" %></li>
-      <li class="active"><%= @book.category.name %></li>
-
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "All books", books_path %></li>
+      <li>
+        <a href="http://localhost:3000/books?utf8=%E2%9C%93&q%5Bcategory_id_eq%5D=<%= @book.category.id %>">
+          <%= @book.category.name %>
+        </a>
+      </li>
+      <li class="active"><%= @book.title %></li>
     </ul>
     <hr>
   </div>

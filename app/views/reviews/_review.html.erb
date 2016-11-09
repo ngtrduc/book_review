@@ -1,11 +1,23 @@
 <div class="col-md-12 paper">
+  <% if can? :update, review %>
+    <span class="right-conner">
+      <%= link_to "", edit_review_path(review),
+        class: "glyphicon glyphicon-edit" %>
+      <%= link_to "", review_path(review), method: :delete,
+        data: {confirm: t("reviews.confirm")}, class: "glyphicon glyphicon-remove" %>
+    </span>
+  <% end %>
   <div id="sub_review">
-    <h4 class="display_inline"><strong><%= review.user.name %></strong></h4>
+    <h4 class="display_inline">
+      <span><%= link_to image_tag(review.user.avatar, size: Settings.users.size),
+        review.user, class: "book-image" %></span>
+      <%= link_to review.user.name, review.user %>
+    </h4>
 
-    <div id="review-rating" data-score="<%= review.rating %>">
-    </div>
-    <p><%= t("reviews.content")%> <%= review.content %></p>
-    <p class="text-left display_inline">
+    <div class="review-rating" data-score="<%= review.rating %>"></div>
+    <h4>Review's Content:</h4>
+    <p><%= review.content %></p>
+    <p class="text-left display_inline timestamp">
       <em>
         <%= "Posted by" %>
         <%= link_to review.user.name, review.user %>
@@ -14,18 +26,15 @@
       </em>
     </p>
     <p>
-      <% if can? :update, review %>
-        <%= link_to t("reviews.edit"), edit_review_path(review),
-          class: "btn btn-primary" %>
-        <%= link_to t("reviews.delete"), review_path(review), method: :delete,
-          data: {confirm: t("reviews.confirm")}, class: "btn btn-danger" %>
-      <% end %>
-      <div class = "reviews_comments">
-        <%= render review.comments %>
-      </div>
+
+      <ul id="comments_<%= review.id %>" class="list-comment">
+        <% if review.comments.any? %>
+          <%= render review.comments %>
+        <% end %>
+      </ul>
       <% if user_signed_in?%>
         <%= render "comments/comment_form",
-          comment: review.user.comments.build(review_id: review.id) %>
+          comment: Comment.new, review: review %>
       <% end %>
     </p>
   </br>

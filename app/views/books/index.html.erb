@@ -1,5 +1,12 @@
 <div class="container-fluid well boxshadow" >
-  <h1><%= t ".all" %></h1>
+  <div class="row">
+    <hr>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "All books", books_path %></li>
+    </ul>
+    <hr>
+  </div>
   <div>
     <ul class="nav navbar-nav navbar-right">
       <li><%= sort_link @q, :rate_avg, {}, class: "btn btn-custom" %></li>
@@ -20,7 +27,7 @@
     <% @books.each do |book| %>
       <div class ="row1">
         <%= link_to image_tag(book.picture, size: Settings.books.size_index), book, class: "book-image center" %>
-        <label style="text-align: center"><%= link_to book.title, book_path(book) %></label>
+        <label style="text-align: center"><%= link_to book.title.truncate(28), book_path(book) %></label>
         <p class="book-detail"><%= t ("books.author") %> <%= book.author %></p>
         <p class="book-detail">
           <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
