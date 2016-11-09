@@ -1,5 +1,5 @@
 $(document).on('ready page:load',function(){
-  $('#review-rating').raty({
+  $('.review-rating').raty({
     readOnly:true,
     score: function() {
       return $(this).attr('data-score');

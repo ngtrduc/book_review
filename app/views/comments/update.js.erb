@@ -1,0 +1,3 @@
+$('#comment-content-<%= @comment.id %>').removeClass("hidden");
+$('#comment-content-<%= @comment.id %>').html("<%= @comment.content %>");
+$('#comment-form-<%= @comment.id %>').addClass("hidden");

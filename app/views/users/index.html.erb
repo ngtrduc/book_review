@@ -1,5 +1,13 @@
 <% provide :title, t("user.all") %>
 <div class="container-fluid well boxshadow">
+  <div class="row">
+    <hr>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li class="active"><%= link_to "All users", users_path %></li>
+    </ul>
+    <hr>
+  </div>
   <h1><%= t "user.all" %></h1>
   <div class="row">
     <div class="col-md-6 col-md-offset-3">

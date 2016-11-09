@@ -1,9 +1,19 @@
 <div class="container-fluid well boxshadow">
   <div class="row">
+    <hr>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "All users", users_path %></li>
+      <li class="active"><%= @user.name %></li>
+    </ul>
+    <hr>
+  </div>
+
+  <div class="row">
     <div class="col-md-4">
       <div class="col-md-6">
         <h1>
-          <%= image_tag(@user.avatar, size: Settings.users.size_ava) %>
+          <%= image_tag @user.avatar, size: Settings.users.size_ava, class: "book-image" %>
         </h1>
         <%= render "shared/stats" %>
       </div>
@@ -17,17 +27,16 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-8">
-      <%# unless current_user == @user %>
+      <div class="col-md-8">
         <%= render "favorite" %>
-      <%# end %>
-      <%= render "reading_history" %>
-    <br>
-    <br>
-    <div class="col-md-8" id="activity-id">
-      <% unless current_user == @user %>
-        <%= render @activities %>
-      <% end %>
+        <%= render "reading_history" %>
+      <br>
+      <br>
+      <div id="activity-id">
+        <% unless current_user == @user %>
+          <%= render @activities %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

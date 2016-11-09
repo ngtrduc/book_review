@@ -1,5 +1,12 @@
 <div class="container-fluid well boxshadow" >
-  <h1><%= t ".all" %></h1>
+  <div class="row">
+    <hr>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "All books", books_path %></li>
+    </ul>
+    <hr>
+  </div>
   <div>
     <ul class="nav navbar-nav navbar-right">
       <li><%= sort_link @q, :rate_avg, {}, class: "btn btn-custom" %></li>

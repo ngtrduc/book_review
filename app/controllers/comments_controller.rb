@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
+
   def create
     @comment = current_user.comments.build comment_params
     @review = @comment.review
@@ -11,6 +12,19 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    if @comment.update_attributes comment_params
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
 
   def destroy
     @comment = Comment.find(params[:id])

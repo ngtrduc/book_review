@@ -34,6 +34,7 @@ en:
   author_name: "by HHL"
   forgot_password: "Forgot your password?"
   did_not_receive_confirmation: "Didn't receive confirmation instructions?"
+  time_type_2: "%d/%m/%Y %I:%M%p"
   static_pages:
     home:
       title: "Wellcome to Book Reviewing System"
