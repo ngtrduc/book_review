@@ -41,11 +41,7 @@
       <br>
       <div class="form-group">
         <div>
-          <% if @book.picture.present? %>
-            <%= link_to image_tag(@book.picture, size: Settings.admin.books.size), @book %>
-          <% else %>
-            <%= link_to image_tag(Settings.books.url, size: Settings.admin.books.size), @book %>
-          <% end %>
+          <%= link_to image_tag(@book.picture, size: Settings.admin.books.size), [:admin, @book] %>
         </div>
         <br>
         <br>

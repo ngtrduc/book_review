@@ -95,6 +95,7 @@ en:
       delete: "Delete"
       create_at: "Create at"
       add_request: "Add new a request"
+      status: "Status"
     new:
       sent: "Send"
       title: "New your request"
@@ -197,7 +198,7 @@ en:
         id: "ID"
         content: "Content"
         status: "Status"
-        user: "Username sents request"
+        user: "Username"
         edit: "Edit"
         delete: "Delete"
         detail: "Detail"

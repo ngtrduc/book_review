@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2 col-sm-offset-1">
-      <%= image_tag @user.avatar, size: Settings.admin.users.size %>
+      <%= image_tag @user.avatar, size: Settings.admin.users.size_ava, class: "book-image" %>
     </div>
-    <div class="col-sm-4 col-sm-offset-2">
-      <h3><%= t "admin.users.table.name" %> <%= @user.name %></h3>
-    <p> <%= t "admin.users.table.email" %> <%= @user.email %> </p>
-    <p> <%= t "admin.users.table.password" %> <%= @user.password %> </p>
-    <br>
+    <div class="col-sm-4">
+      <h3>Name: <%= @user.name %></h3>
+      <p>email: <%= @user.email %> </p>
+      <p>Review's count: <%= @user.reviews.size %></p>
+      <br>
     </div>
   </div>
   <div class="col-sm-offset-1">

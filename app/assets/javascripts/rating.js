@@ -19,4 +19,9 @@ $(document).on('ready page:load',function(){
     path: '/assets/',
     scoreName: 'review[rating]'
   });
+
+  $('.disable-input :input').prop('disabled', true);
+  $('.disable-input #rating-form').raty({
+    readOnly:true
+  })
 });

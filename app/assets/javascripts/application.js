@@ -37,3 +37,5 @@ function set_timeout() {
 }
 $(document).ready(set_timeout);
 $(document).on('page:load', set_timeout);
+
+$('.disable-input :input').prop('disabled', true);

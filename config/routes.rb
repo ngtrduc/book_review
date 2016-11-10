@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   get "static_pages/help"
   get "static_pages/about"
 
+
   namespace :admin do
     root "dashboard#index"
     resources :categories
     resources :books
-    resources :requests, only: [:index, :update, :destroy]
+    resources :requests, except: [:create, :new, :edit]
     resources :users
   end
 

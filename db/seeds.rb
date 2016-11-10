@@ -1,5 +1,9 @@
 User.create(name: "admin", email: "admin@gmail.com",
   password: "123456", password_confirmation: "123456", role: 0)
+User.create! name: "test", email: "test@gmail.com",
+  password: "123456", password_confirmation: "123456", role: 1,
+  avatar: File.open(File.join(Rails.root,
+        "app/assets/images/avatar/test.jpg")
 15.times do |n|
   name = Faker::Name.name
   email = "ducnt#{n}@gmail.com"
@@ -17,6 +21,7 @@ Category.create! name: "Education & Teaching"
 Category.create! name: "Literature"
 Category.create! name: "Computer & Technology"
 
+# create book with reviews
 Book.create! title: "Born to Run",
   description: "“Writing about yourself is a funny business…But in a project like this, the writer has made one promise, to show the reader his mind. In these pages, I’ve tried to do this.” —Bruce Springsteen, from the pages of Born to Run",
   author: "Bruce Springsteen",
@@ -174,6 +179,7 @@ Book.create! title: "The Handmade Entrepreneur—How to Sell on Etsy, or Anywher
   picture: File.open(File.join(Rails.root,
         "app/assets/images/book/15.jpg"))
 
+#create randombook
 20.times do |n|
   title  = Faker::Book.title
   description = Faker::Hipster.paragraph(2,false,2)
@@ -188,6 +194,7 @@ Book.create! title: title,
     category_id: category_id
 end
 
+#create reviews
 for user_id in 2..10
   i = rand 10..15
   1.upto(i) do |book_id|
@@ -200,6 +207,7 @@ for user_id in 2..10
   end
 end
 
+#update avg_rating
 1.upto(15) do |n|
   book = Book.find n
   book.update_rate_avg

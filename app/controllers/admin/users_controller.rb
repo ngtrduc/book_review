@@ -27,7 +27,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update user_params
-      flash[:success] = t "application.flash.users.update_success"
+      flash[:success] = "Update user successfully!!"
       redirect_to admin_users_path @user
     else
       flash[:error] = t "application.flash.users.update_error"

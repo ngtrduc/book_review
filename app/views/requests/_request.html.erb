@@ -1,8 +1,9 @@
 <% @requests.each_with_index do |request, index| %>
   <tr>
     <th scope="row"><%= index + 1 %></th>
-    <td><%= request.content.truncate 80 %></td>
+    <td><%= request.content.truncate 70 %></td>
     <td><%= request.created_at.strftime t(:time_type_2) %></td>
+    <td><%= request.status %></td>
     <td>
       <%= link_to "", request_path(request),
         class: "glyphicon glyphicon-log-in" %>

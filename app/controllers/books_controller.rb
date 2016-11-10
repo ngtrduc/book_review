@@ -15,9 +15,9 @@ class BooksController < ApplicationController
       redirect_to books_path
     else
       load_reviews
-      @reviews = (@book.reviews.order created_at: :desc).page(params[:page])
+      @reviews = @book.reviews.order(created_at: :desc).includes(:comments).page(params[:page])
           .per Settings.reviews.page
-      if current_user.nil? == false
+      if current_user
         @new_review = current_user.reviews.build
         @favorite = Book.mark_favorite @book, current_user
       end
