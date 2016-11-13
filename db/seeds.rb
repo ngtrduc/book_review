@@ -2,8 +2,7 @@ User.create(name: "admin", email: "admin@gmail.com",
   password: "123456", password_confirmation: "123456", role: 0)
 User.create! name: "test", email: "test@gmail.com",
   password: "123456", password_confirmation: "123456", role: 1,
-  avatar: File.open(File.join(Rails.root,
-        "app/assets/images/avatar/test.jpg")
+  avatar: File.open(File.join(Rails.root,"app/assets/images/avatar/test.jpg"))
 15.times do |n|
   name = Faker::Name.name
   email = "ducnt#{n}@gmail.com"
