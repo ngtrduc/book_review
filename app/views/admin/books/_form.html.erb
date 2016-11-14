@@ -40,14 +40,14 @@
       </div>
       <br>
       <div class="form-group">
-        <div>
-          <%= link_to image_tag(@book.picture, size: Settings.admin.books.size), [:admin, @book] %>
+        <div class="upload-preview">
+            <%= image_tag "book/dac-nhan-tam.jpg", size: "150x150" %>
         </div>
         <br>
         <br>
         <div>
           <span class="picture">
-            <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png" %>
+            <%= f.file_field :picture, accept: "image/jpeg,image/gif,image/png", class: "file" %>
           </span>
         </div>
       </div>
