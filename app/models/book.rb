@@ -1,26 +1,38 @@
 class Book < ActiveRecord::Base
-  ratyrate_rateable "title"
 
   belongs_to :category
-  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :picture, styles: {medium: "300x300>", thumb: "100x100>"},
+    default_url: "book/dac-nhan-tam.jpg"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
   has_many :marks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
 
   validates :title, presence: true
-  validates :description, presence: true, length: {maximum: 150}
+  validates :description, presence: true, length: {maximum: 1000}
   validates :publish_date, presence: true
   validates :author, presence: true
   validates :number_page, presence: true
-  validate :picture_size
+  paginates_per 4
 
   scope :mark_book, -> (book,current_user) do
-    joins(:marks).where(:marks, {user_id: current_user.id, book_id: book.id})
+    if current_user.nil? == false
+      joins(:marks).where(:marks, {user_id: current_user.id, book_id: book.id})
+    end
   end
 
   scope :mark_favorite, -> (book, current_user) do
-    joins(:favorites).where(:favorites, {user_id: current_user.id, book_id: book.id})
+    if current_user.id.nil? == false
+      joins(:favorites).where(:favorites, {user_id: current_user.id, book_id: book.id})
+    end
+  end
+
+  scope :best_book, -> do
+    order("rate_avg DESC").limit(3)
+  end
+
+  scope :random_book, -> do
+    order("RANDOM()").limit(3)
   end
 
   def marked_reading? current_user
@@ -49,15 +61,8 @@ class Book < ActiveRecord::Base
 
   def update_rate_avg
     if self.reviews.size > 0
-      @value =  self.reviews.average(:rating)
-      update_attributes(rate_avg: @value.to_f.round(1))
-    end
-  end
-
-  private
-  def picture_size
-    if picture.size > Settings.admin.books.pic_size.megabytes
-      errors.add(:picture, I18n.t("models.book.validate_picture"))
+      @value =  self.reviews.average :rating
+      update_attributes rate_avg: @value.to_f.round(2)
     end
   end
 end

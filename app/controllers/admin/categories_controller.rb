@@ -1,7 +1,7 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::BaseController
   load_and_authorize_resource
   def index
-    @categories = Category.page(params[:page]).per(Settings.per_page).
+    @categories = Category.all.
       order created_at: :desc
   end
 
@@ -14,9 +14,9 @@ class Admin::CategoriesController < ApplicationController
   def create
     if @category.save
       flash[:success] = t "admin.categories.success"
-      redirect_to admin_root_url
+      redirect_to admin_categories_path
     else
-      flash[:danger] = t "admin.categories.fail"
+      flash[:danger] = "Category Is Extinct!"
       render :new
     end
   end

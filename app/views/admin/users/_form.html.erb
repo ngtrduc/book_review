@@ -1,23 +1,37 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 col-md-offset-3 well">
     <%= form_for [:admin, @user] do |f| %>
-      <%= render "shared/error_messages", object: @user %>
-      <%= f.text_field :name,placeholder: "Name", class: "form-control" %>
-      <%= f.email_field :email,placeholder: "Email..", class: "form-control" %>
-      <%= f.password_field :password,placeholder: "Password", class: "form-control" %>
-      <%= f.password_field :password_confirmation,placeholder: "Password Confirmation", class: "form-control" %>
-      <span class="form-group avatar">
-        <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png" %>
-      </span>
-
       <div class="form-group">
-        <%= f.submit t(:submit), class: "btn btn-primary" %>
+        <%= render "shared/error_messages", object: @user %>
+        <%= f.text_field :name,placeholder: "Name", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.email_field :email,placeholder: "Email..", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password,placeholder: "Password", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.password_field :password_confirmation,placeholder: "Password Confirmation", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <div class="upload-preview">
+            <%= image_tag @user.avatar, size: Settings.users.size_ava, class: "book-image" %>
+        </div>
+        <br>
+        <br>
+        <span class="form-group avatar">
+          <%= f.file_field :avatar, accept: "image/jpeg,image/gif,image/png", class: "file" %>
+        </span>
+      </div>
+      <div class="form-group">
+        <%= f.submit t(:submit), class: "btn btn-primary form-control" %>
       </div>
 
-      <div class="form-group">
-        <%= link_to t(". back"), admin_users_path, class: "btn btn-primary" %>
+      <div class="form-group" style="font-size: 2.5em;">
+        <%= link_to "", admin_users_path, class: "glyphicon glyphicon-circle-arrow-left" %>
       </div>
-
+      </div>
     <% end %>
   </div>
 </div>

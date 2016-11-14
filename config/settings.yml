@@ -2,8 +2,10 @@ per_page: 12
 accept_request: 2
 books:
   page: 10
-  size: "200x250"
+  size: "250x320"
+  size_index: "200x250"
   size2: "350x400"
+  size_tiny: "80x100"
   url: "/assets/dac-nhan-tam.jpg"
   marked_book:
     reading: 0
@@ -24,8 +26,9 @@ users:
   size_ava: "100x100"
   url: "/assets/user_3.png"
   pic_size: 5
+  comment_size: "30x30"
 reviews:
-  page: 5
+  page: 4
 favorites:
   page: 2
   size: "100x100"

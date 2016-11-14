@@ -1,9 +1,9 @@
-class Admin::BooksController < ApplicationController
+class Admin::BooksController < Admin::BaseController
   load_and_authorize_resource
   before_action :load_category, only: [:new, :edit, :update]
 
   def index
-    @books = Book.page(params[:page]).per Settings.admin.books.page
+    @books = Book.all
   end
 
   def new
@@ -13,7 +13,7 @@ class Admin::BooksController < ApplicationController
   def create
     @book = Book.new book_params
     if @book.save
-      flash[:success] = t "application.flash.books.create_success"
+      flash[:success] = "Create Successfully!!!"
       redirect_to admin_books_path
     else
       render :new
@@ -28,19 +28,19 @@ class Admin::BooksController < ApplicationController
 
   def update
     if @book.update_attributes book_params
-      flash[:success] = t "application.flash.admin.books.updated_success"
+      flash[:success] = "Update successfully"
       redirect_to admin_book_path @book
     else
-      flash[:error] = t "application.flash.books.updated_error"
+      flash[:error] = "An error occured, please try again."
       render :edit
     end
   end
 
   def destroy
     if @book.destroy
-      flash[:success] = t "application.flash.books.destroy_success"
+      flash[:success] = "Destroy book Successfully"
     else
-      flash[:error] = t "application.flash.books.destroy_fail"
+      flash[:error] = "An error occured, please try again."
     end
     redirect_to admin_books_path
   end

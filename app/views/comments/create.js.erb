@@ -1,0 +1,2 @@
+$('#comments_<%= @review.id %>').append("<%=j render 'comments/comment', comment: @comment %>");
+$('#comment-field-<%= @review.id %>').val('')

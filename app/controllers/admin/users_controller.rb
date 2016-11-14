@@ -1,8 +1,8 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::BaseController
   load_and_authorize_resource
 
   def index
-    @users = User.page(params[:page]).per Settings.per_page
+    @users = User.includes(:reviews)
   end
 
   def new
@@ -27,7 +27,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update user_params
-      flash[:success] = t "application.flash.users.update_success"
+      flash[:success] = "Update user successfully!!"
       redirect_to admin_users_path @user
     else
       flash[:error] = t "application.flash.users.update_error"

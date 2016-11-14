@@ -1,0 +1,14 @@
+<% if favorites.size == 0 %>
+  <span>There's no one favorite this book.</span>
+<% else %>
+  <ul class="users follow">
+    <% favorites.each do |f| %>
+      <li>
+        <%= link_to image_tag(f.user.avatar, size: Settings.users.size, class: "book-image"),
+            user_path(f.user) %>
+        <%= link_to f.user.name, f.user %>
+      </li>
+    <div id = "space" ></div>
+    <% end %>
+  </ul>
+<% end %>

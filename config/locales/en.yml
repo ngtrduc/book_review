@@ -34,6 +34,7 @@ en:
   author_name: "by HHL"
   forgot_password: "Forgot your password?"
   did_not_receive_confirmation: "Didn't receive confirmation instructions?"
+  time_type_2: "%d/%m/%Y %I:%M%p"
   static_pages:
     home:
       title: "Wellcome to Book Reviewing System"
@@ -94,6 +95,7 @@ en:
       delete: "Delete"
       create_at: "Create at"
       add_request: "Add new a request"
+      status: "Status"
     new:
       sent: "Send"
       title: "New your request"
@@ -196,7 +198,7 @@ en:
         id: "ID"
         content: "Content"
         status: "Status"
-        user: "Username sents request"
+        user: "Username"
         edit: "Edit"
         delete: "Delete"
         detail: "Detail"

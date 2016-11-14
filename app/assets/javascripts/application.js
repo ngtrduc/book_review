@@ -12,9 +12,45 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
 //= require social-share-button
 //= require jquery.raty
 //= require ratyrate
+
+var make_select_box = function(){
+  $('.select-category').niceSelect();
+}
+$(document).ready(make_select_box);
+$(document).on('page:load', make_select_box);
+
+var dataTab = function() {
+  $('#data_table').DataTable();
+}
+$(document).ready(dataTab);
+$(document).on('page:load', dataTab);
+
+function set_timeout() {
+  $('.alert').delay(3000).slideUp();
+}
+$(document).ready(set_timeout);
+$(document).on('page:load', set_timeout);
+
+function image_preview() {
+  var preview = $(".upload-preview img");
+
+  $(".file").change(function(event){
+     var input = $(event.currentTarget);
+     var file = input[0].files[0];
+     var reader = new FileReader();
+     reader.onload = function(e){
+         image_base64 = e.target.result;
+         preview.attr("src", image_base64);
+     };
+     reader.readAsDataURL(file);
+  });
+}
+$(document).ready(image_preview);
+$(document).on('page:load', image_preview);

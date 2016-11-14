@@ -6,15 +6,16 @@ Rails.application.routes.draw do
   # root "static_pages#home"
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root "books#index"
+  root "static_pages#home"
   get "static_pages/help"
   get "static_pages/about"
 
+
   namespace :admin do
-    root "categories#index"
+    root "dashboard#index"
     resources :categories
     resources :books
-    resources :requests, only: [:index, :update]
+    resources :requests, except: [:create, :new, :edit]
     resources :users
   end
 
@@ -26,12 +27,12 @@ Rails.application.routes.draw do
   resources :books
   resources :users, except: [:new, :destroy, :create]
   resources :marks, only: [:new, :create, :destroy]
-  resources :favorites, only: [:new, :create, :destroy]
+  resources :favorites, only: [:index, :new, :create, :destroy]
   resources :users, only: [:index, :edit, :update]
   resources :requests, except: [:edit, :update]
   resources :reviews, except: [:show, :new, :index]
   resources :relationships, only: [:create, :destroy]
-  resources :comments, only: [:create , :destroy]
+  resources :comments, only: [:create , :destroy, :edit, :update]
   resources :activities, only: [:index, :create]
   resources :likes, only: [:create, :destroy]
 end

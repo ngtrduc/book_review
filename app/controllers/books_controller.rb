@@ -3,8 +3,8 @@ class BooksController < ApplicationController
   before_action :load_categories, only: [:index]
 
   def index
-    @search = Book.search params[:q]
-    @books = @search.result.page(params[:page]).per Settings.per_page
+    @q = Book.search params[:q]
+    @books = @q.result.page(params[:page]).per Settings.per_page
   end
 
   def show
@@ -15,10 +15,12 @@ class BooksController < ApplicationController
       redirect_to books_path
     else
       load_reviews
-      @new_review = current_user.reviews.build
-      @reviews = (@book.reviews.order created_at: :desc).page(params[:page])
-        .per Settings.reviews.page
-      @favorite = Book.mark_favorite @book, current_user
+      @reviews = @book.reviews.order(created_at: :desc).includes(:comments).page(params[:page])
+          .per Settings.reviews.page
+      if current_user
+        @new_review = current_user.reviews.build
+        @favorite = Book.mark_favorite @book, current_user
+      end
     end
   end
 

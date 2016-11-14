@@ -1,0 +1,45 @@
+<article class="post">
+  <header>
+    <div class="title">
+      <h3 style="text-align: center;"><%= link_to book.title, book_path(book) %></h3>
+      <p style="text-align: center; margin-top: 10px;">
+        Rating:
+        <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
+      </p>
+    </div>
+    <div class="meta">
+      <span>Publish Date</span>
+      <time class="published" datetime="<%= book.publish_date %>"><%= book.publish_date %></time>
+      <span class="name">By <a href="#"><%= book.author %></a></span>
+    </div>
+  </header>
+  <div class="row">
+    <div class="col-md-5">
+      <%= link_to image_tag(book.picture, size: Settings.books.size), book, class: "book-image " %>
+    </div>
+    <div class="col-md-6 col-sm-offset-1" >
+      <h3>Description</h3>
+      <p style="font-family: sans-serif;font-size: 95%;"><i><%= book.description.truncate(250) %></i></p>
+    </div>
+  </div>
+
+
+  <hr>
+  <footer>
+    <ul class="actions">
+      <li><%= link_to "See Detail", book_path(book), class: "button big" %></li>
+    </ul>
+    <ul class="stats">
+      <li><a href="#">Favorites & Reviews</a></li>
+      <li>
+        <%= link_to favorites_path(book_id: book.id),
+          {"data-toggle": "modal", "data-target": "#favorite-list", remote: true} do %>
+          <%= book.favorites.size %>
+          <span class="glyphicon glyphicon-heart"></span>
+        <% end %>
+      </li>
+      <li><a href="#" class="review"><%= book.reviews.size %>
+        <span class="glyphicon glyphicon-pencil"></span></a></li>
+    </ul>
+  </footer>
+</article>

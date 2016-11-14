@@ -1,29 +1,35 @@
 <% provide :title, t("user.all") %>
-<h1><%= t "user.all" %></h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <table class="table table-striped">
-      <tr>
-        <th><%= t "users.name" %></th>
-        <th><%= t "admin.users.table.email" %></th>
-        <th><%= t "users.avatar" %></th>
-      </tr>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= link_to user.name, user %></td>
-          <td><%= user.email%></td>
-          <td>
-            <% if user.avatar.present? %>
-              <%= link_to image_tag(user.avatar, size: Settings.users.size), user %>
-            <% else %>
-              <%= link_to image_tag(Settings.users.url, size: Settings.users.size),
-                user %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+<div class="container-fluid well boxshadow">
+  <div class="row">
+    <hr>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li class="active"><%= link_to "All users", users_path %></li>
+    </ul>
+    <hr>
   </div>
+  <h1><%= t "user.all" %></h1>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <table class="table table-striped">
+        <tr>
+          <th><%= t "users.name" %></th>
+          <th><%= t "admin.users.table.email" %></th>
+          <th><%= t "users.avatar" %></th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, user %></td>
+            <td><%= user.email%></td>
+            <td>
+              <%= link_to image_tag(user.avatar, size: Settings.users.size), user %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <%= paginate @users %>
+  <%= page_entries_info @users %>
 </div>
-<%= paginate @users %>
-<%= page_entries_info @users %>
+

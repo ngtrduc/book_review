@@ -1,41 +1,47 @@
-<div class="top-content">
-  <div class="inner-bg">
-    <div class="container">
-
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3 well">
-              <div class="form-top">
-                <h1>Login</h1>
-                <%= button_to "Facebook", user_facebook_omniauth_authorize_path,
-                  class: "btn-primary form-control" %>
-                <h4>--------------------------------OR----------------------------------</h4>
-              </div>
-            <div class="form-bottom">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <div class="form-group">
-                    <%= f.email_field :email, placeholder: "User email....", class: "form-control", autofocus: true %>
-                  </div>
-                  <div class="form-group">
-                    <%= f.password_field :password, placeholder: "User password....", class: "form-control", autocomplete: "off" %>
-                  </div>
-                  <% if devise_mapping.rememberable? -%>
-                    <div class="form-group">
-                      <%= f.label :remember_me, class: "checkbox inline" do %>
-                      <%= f.check_box :remember_me %>
-                      <span><%= t "devise.sessions.new.remember_me" %></span>
-                    <% end %>
-                    </div>
-                  <% end -%>
-                  <%= f.submit "Log in",class: "btn-success form-control" %>
-              <% end -%>
-              <div style="margin-top:15px;">
-                Not a member?
-                <%= render "devise/shared/links" %>
-              </div>
-            </div>
+<div class="row">
+  <div class="col-lg-5 col-lg-push-7">
+    <div class="panel panel-default boxshadow">
+      <div class="panel-heading dn-panel-head boxshadow">
+        <h4><%= t :login %></h4>
+      </div>
+      <div class="panel-body">
+        <%= form_for resource, as: resource_name, url: session_path(resource_name) do |f| %>
+          <div class="field dn-field">
+            <%= f.email_field :email, autofocus: true, class: "form-control",
+              placeholder: "Your email" %>
           </div>
+
+          <div class="field dn-field">
+            <%= f.password_field :password, autocomplete: "off",
+              class: "form-control", placeholder: "Your password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div>
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Login", class: "btn btn-primary dn-submit-login" %>
+          </div>
+        <% end %>
+        <div class="dn-login-sns">
+          <h2 class="dn-login-strike">
+            <span>Or Login By</span>
+          </h2>
+          <%= link_to "", user_facebook_omniauth_authorize_path,
+            class: "fa fa-facebook dn-fb" %>
+          <%= link_to "", user_google_oauth2_omniauth_authorize_path,
+            class: "fa fa-google dn-gm" %>
         </div>
+        <br>
+        <br>
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
-
+  <div class="col-lg-7 col-lg-pull-5 main-photo">
+  </div>
 </div>

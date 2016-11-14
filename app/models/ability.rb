@@ -10,7 +10,7 @@ class Ability
       can [:edit, :update], User
       can [:create, :destroy], Request
       can [:create, :edit, :update, :destroy], Review, user_id: user.id
-      can [:create], Comment
+      can [:create, :destroy, :update], Comment, user_id: user.id
       can [:create, :destroy], Mark
       can [:create, :destroy], Favorite
       can [:create, :destroy], Like

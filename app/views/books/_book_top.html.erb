@@ -1,0 +1,21 @@
+<div class ="row">
+  <div class="col-md-4">
+    <% if book.picture.present? %>
+      <%= link_to image_tag(book.picture, size: Settings.books.size), book, class: "book-image" %>
+    <% else %>
+      <%= link_to image_tag(Settings.books.url, size: Settings.books.size), book, class: "book-image" %>
+    <% end %>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-7">
+    <h4><%= link_to book.title, book_path(book) %></h4>
+    <span class="author">
+      By <%= book.author %>.
+    </span>
+    <p>
+      <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
+    </p>
+    <h4>Description</h4>
+    <p><%= book.description %></p>
+  </div>
+</div>

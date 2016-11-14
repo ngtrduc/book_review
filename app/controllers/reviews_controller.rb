@@ -4,8 +4,10 @@ class ReviewsController < ApplicationController
   def create
     @new_review = current_user.reviews.build review_params
     if @new_review.save
+      book = @new_review.book
+      book.rate_avg = book.reviews.average(:rating)
+      book.save
       flash[:success] = t "reviews.messages.create_success"
-      SendEmailWorkerReview.perform_async @new_review.id
     else
       flash[:warning] = t "reviews.messages.create_fail"
     end
@@ -13,12 +15,16 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    @book = @review.book
   end
 
   def update
     if @review.update_attributes review_params
       flash[:success] = t "reviews.messages.update_success"
       redirect_to @review.book
+      book = @review.book
+      book.rate_avg = book.reviews.average(:rating).round 2
+      book.save
     else
       flash[:warning] = t "reviews.messages.update_fail"
       render :edit

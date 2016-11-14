@@ -1,11 +1,12 @@
 $(document).on('ready page:load',function(){
   $('.review-rating').raty({
-    readOnly:false,
+    readOnly:true,
     score: function() {
       return $(this).attr('data-score');
     },
     path: '/assets/'
   });
+
   $('.average-review-rating').raty({
     readOnly:true,
     path: '/assets/',
@@ -13,4 +14,14 @@ $(document).on('ready page:load',function(){
       return $(this).attr('data-score');
     }
   });
+
+  $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+  });
+
+  $('.disable-input :input').prop('disabled', true);
+  $('.disable-input #rating-form').raty({
+    readOnly:true
+  })
 });
