@@ -14,7 +14,6 @@ class Admin::RequestsController < Admin::BaseController
     if @request.update_attributes status: params[:status]
       if @request.accepted?
         flash[:info] = t "admin.request_mailer.success"
-        Admin::RequestMailer.accept_request(@request).deliver_now
       else
         flash[:info] = "User's request is denied."
       end

@@ -8,7 +8,6 @@ class ReviewsController < ApplicationController
       book.rate_avg = book.reviews.average(:rating)
       book.save
       flash[:success] = t "reviews.messages.create_success"
-      SendEmailWorkerReview.perform_async @new_review.id
     else
       flash[:warning] = t "reviews.messages.create_fail"
     end
