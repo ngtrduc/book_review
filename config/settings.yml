@@ -28,9 +28,9 @@ users:
   pic_size: 5
   comment_size: "30x30"
 reviews:
-  page: 4
+  page: 3
 favorites:
-  page: 2
+  page: 5
   size: "100x100"
 activity:
   trackable:
