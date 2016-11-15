@@ -28,15 +28,7 @@
       </div>
     </div>
       <div class="col-md-8">
-        <%= render "favorite" %>
-        <%= render "reading_history" %>
-      <br>
-      <br>
-      <div id="activity-id">
-        <% unless current_user == @user %>
-          <%= render @activities %>
-        <% end %>
-      </div>
+        <%= render "nav_bar_user" %>
     </div>
   </div>
 </div>

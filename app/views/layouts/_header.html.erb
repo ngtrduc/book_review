@@ -21,8 +21,6 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><%= link_to("Admin mode", admin_root_path) if current_user.admin? %></li>
-            <li><%= link_to t(:home), root_path %></li>
-            <li><%= link_to t("static_pages.header.my_actions"), user_path(current_user) %></li>
             <li><%= link_to t("static_pages.header.user"), users_path %></li>
             <li>
               <% unless current_user.admin? %>
@@ -32,13 +30,15 @@
             <li><%= link_to t(:book), books_path %></li>
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <%= image_tag current_user.avatar, size: "40x40" ,class: "img-circle" %>
+                <%= image_tag current_user.avatar.url, class: "user-image" %>
+                <span class="hidden-xs"><%= current_user.name %></span
               </a>
               <ul class="dropdown-menu">
-                 <li><%= link_to "Edit Profile",edit_user_path(current_user) %></li>
-                  <li><%= link_to "Change password", edit_user_registration_path %></li>
-                  <li class="divider"></li>
-                  <li><%= link_to "Log Out", destroy_user_session_path, method: :delete  %></li>
+                <li><%= link_to t("static_pages.header.my_actions"), user_path(current_user) %></li>
+                <li><%= link_to "Edit Profile",edit_user_path(current_user) %></li>
+                <li><%= link_to "Change password", edit_user_registration_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete  %></li>
               </ul>
             </li>
           <%else%>
