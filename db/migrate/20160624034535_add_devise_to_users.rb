@@ -3,6 +3,9 @@ class AddDeviseToUsers < ActiveRecord::Migration
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
+      t.attachment :avatar
+      t.string :name
+      t.integer :role, default: 1
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

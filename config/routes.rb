@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     member do
       get "/relationship", :to => "relationships#index", :as => :relationships
     end
+    resources :review_votes, only: [:create, :destroy]
   end
   resources :books
   resources :users, except: [:new, :destroy, :create]

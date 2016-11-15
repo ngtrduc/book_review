@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   enum role: [:admin, :user]
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "avatar/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  validates :name, length: {maximum: 30}
   has_many :marks, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -17,6 +18,7 @@ class User < ActiveRecord::Base
     foreign_key: :followed_id, dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :review_votes, dependent: :destroy
 
   class << self
     def find_for_google_oauth2 access_token, signed_in_resource = nil
@@ -75,6 +77,10 @@ class User < ActiveRecord::Base
 
   def liked? activity
     likes.find_by activity_id: activity.id
+  end
+
+  def voted? review_id
+    review_votes.find_by review_id: review_id
   end
 
   private

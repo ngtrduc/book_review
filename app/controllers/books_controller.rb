@@ -14,8 +14,7 @@ class BooksController < ApplicationController
       flash[:danger] = t "books.show.error"
       redirect_to books_path
     else
-      load_reviews
-      @reviews = @book.reviews.order(created_at: :desc).includes(:comments).page(params[:page])
+      @reviews = @book.reviews.order(vote_count: :desc).includes(:comments).page(params[:page])
           .per Settings.reviews.page
       if current_user
         @new_review = current_user.reviews.build
@@ -25,10 +24,6 @@ class BooksController < ApplicationController
   end
 
   private
-  def load_reviews
-    @reviews = @book.reviews
-  end
-
   def load_categories
     @categories = Category.all
   end

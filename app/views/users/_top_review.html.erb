@@ -1,0 +1,31 @@
+<div class="favorite_books" >
+  <p><span> <%= "Top Review" %> </span></p>
+  <div id="list_book">
+    <% @top_reviews.each do |review| %>
+      <li class="list-group-item list-group-item-info">
+        <div class="row">
+          <div class="col-md-3">
+            <%= link_to image_tag(review.book.picture, size: Settings.review.size,
+              class: "book-image"), review.book %>
+          </div>
+          <div class="col-md-9">
+            <h3>Content</h3>
+            <p><%= review.content.truncate 300 %></p>
+            <p>
+              <span>
+                <%= review.review_votes.size %>
+              </span>
+              <span>
+                <i class="glyphicon glyphicon-thumbs-up" ></i>
+              </span>
+            </p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </div>
+  <div class="page">
+    <%= paginate @top_reviews %>
+    <%= page_entries_info @top_reviews %>
+  </div>
+</div>

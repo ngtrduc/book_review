@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019182601) do
+ActiveRecord::Schema.define(version: 20161115090204) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -120,13 +120,25 @@ ActiveRecord::Schema.define(version: 20161019182601) do
 
   add_index "requests", ["user_id"], name: "index_requests_on_user_id"
 
+  create_table "review_votes", force: :cascade do |t|
+    t.integer  "review_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "review_votes", ["review_id"], name: "index_review_votes_on_review_id"
+  add_index "review_votes", ["user_id"], name: "index_review_votes_on_user_id"
+
   create_table "reviews", force: :cascade do |t|
     t.text     "content"
     t.integer  "rating"
     t.integer  "user_id"
     t.integer  "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "helpful",    default: 0
+    t.integer  "vote_count", default: 0
   end
 
   add_index "reviews", ["book_id"], name: "index_reviews_on_book_id"

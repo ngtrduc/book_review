@@ -32,6 +32,9 @@ reviews:
 favorites:
   page: 5
   size: "100x100"
+review:
+  page: 4
+  size: "150x150"
 activity:
   trackable:
     review:
