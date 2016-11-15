@@ -4,9 +4,6 @@ class ReviewsController < ApplicationController
   def create
     @new_review = current_user.reviews.build review_params
     if @new_review.save
-      book = @new_review.book
-      book.rate_avg = book.reviews.average(:rating)
-      book.save
       flash[:success] = t "reviews.messages.create_success"
     else
       flash[:warning] = t "reviews.messages.create_fail"

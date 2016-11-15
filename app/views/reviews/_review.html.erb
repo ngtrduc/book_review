@@ -25,8 +25,30 @@
         <%= "ago."%>
       </em>
     </p>
-    <p>
 
+    <p>
+      <% if current_user %>
+        <% unless current_user.voted?(review.id) %>
+          <span id="vote-contain-<%= review.id %>"><%= "Is this review helpful, vote here! " %></span>
+          <%= link_to user_review_votes_path(current_user,
+            review_vote: {review_id: review.id}), class: "btn btn-custom",
+            id: "vote-link-#{review.id}", method: :post, remote: :true do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+          <% end %>
+        <% else %>
+          <span class="btn btn-success "><%= "Voted" %></span>
+        <% end %>
+      <% end %>
+    </p>
+    <p>
+      <span id="vote-<%= review.id %>">
+        <%= review.review_votes.size %>
+      </span>
+      <span>
+        <i class="glyphicon glyphicon-thumbs-up" ></i>
+      </span>
+    </p>
+    <p>
       <ul id="comments_<%= review.id %>" class="list-comment">
         <% if review.comments.any? %>
           <%= render review.comments %>

@@ -1,26 +1,29 @@
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" id="myTab">
   <li class="active">
+    <%= link_to "New Feed", "#newfeed", data: {toggle: "tab"} %>
+  </li>
+  <li>
     <%= link_to "Favorited", "#favorite", data: {toggle: "tab"} %>
   </li>
   <li>
     <%= link_to "Top Review", "#reviews", data: {toggle: "tab"} %>
   </li>
   <li>
-    <%= link_to "New Feed", "#newfeed", data: {toggle: "tab"} %>
-  </li>
-  <li>
     <%= link_to "Reading History", "#reading-history", data: {toggle: "tab"} %>
   </li>
-
 </ul>
+
 <div class="tab-content">
-  <div id="favorite" class="tab-pane fade in active">
+
+  <div id="newfeed" class="tab-pane fade  in active">
+  </div>
+
+  <div id="favorite" class="tab-pane fade">
     <%= render "favorite" %>
   </div>
-  <div id="reviews" class="tab-pane fade">
-  </div>
 
-  <div id="newfeed" class="tab-pane fade">
+  <div id="reviews" class="tab-pane fade">
+    <%= render "top_review" %>
   </div>
 
   <div id="reading-history" class="tab-pane fade">

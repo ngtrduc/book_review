@@ -15,6 +15,8 @@ class UsersController < ApplicationController
       .page(params[:page]).per Settings.favorites.page
     @activities = PublicActivity::Activity.order("created_at desc")
       .where owner: @user
+    @top_reviews = @user.reviews.order("vote_count DESC").includes(:book)
+      .page(params[:page]).per Settings.review.page
   end
 
   def update

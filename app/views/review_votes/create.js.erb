@@ -1,0 +1,3 @@
+$('#vote-link-<%= @review.id %>').addClass("hidden");
+$('#vote-contain-<%= @review.id %>').text("Thank you for voting!!");
+$('#vote-<%= @review.id %>').text("<%= @review.review_votes.size %>");
