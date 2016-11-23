@@ -1,7 +1,7 @@
 <article class="post">
   <header>
     <div class="title">
-      <h3 style="text-align: center;"><%= link_to book.title, book_path(book) %></h3>
+      <h3 style="text-align: center;"><%= link_to book.title, book %></h3>
       <p style="text-align: center; margin-top: 10px;">
         Rating:
         <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
@@ -27,7 +27,7 @@
   <hr>
   <footer>
     <ul class="actions">
-      <li><%= link_to "See Detail", book_path(book), class: "button big" %></li>
+      <li><%= link_to "See Detail", book, class: "button big" %></li>
     </ul>
     <ul class="stats">
       <li><a href="#">Favorites & Reviews</a></li>

@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require cable
+//= require jquery.slimscroll
 //= require dataTables/jquery.dataTables
 //= require bootstrap
 //= require turbolinks
@@ -19,6 +21,8 @@
 //= require social-share-button
 //= require jquery.raty
 //= require ratyrate
+//= require skel.min
+//= require notify
 
 var make_select_box = function(){
   $('.select-category').niceSelect();
@@ -75,3 +79,7 @@ function keepStateNavUser() {
 
 $(document).ready(keepStateNavUser);
 $(document).on('page:load', keepStateNavUser);
+
+$(document).on("turbolinks:load", function() {
+    $("#slimScrollDiv").slimScroll();
+});

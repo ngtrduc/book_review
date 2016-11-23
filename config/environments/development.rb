@@ -32,6 +32,8 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
+  config.action_cable.allowed_request_origins = ['http://0.0.0.0:3000']
+  config.action_cable.disable_request_forgery_protection = true
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 

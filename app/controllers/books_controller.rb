@@ -9,7 +9,6 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find_by id: params[:id]
-    @marks = Book.mark_book @book, current_user
     if @book.nil?
       flash[:danger] = t "books.show.error"
       redirect_to books_path
@@ -18,7 +17,6 @@ class BooksController < ApplicationController
           .per Settings.reviews.page
       if current_user
         @new_review = current_user.reviews.build
-        @favorite = Book.mark_favorite @book, current_user
       end
     end
   end
