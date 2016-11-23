@@ -1,0 +1,9 @@
+<li>
+  <%= link_to notification_link(notification) do %>
+    <div class="pull-left"><%= notification_image notification %></div>
+    <p>
+      <div class="notification-content"><%= notification_content notification %></div>
+      <div class="notification-date"><%= notification.created_at.strftime t(:time_type_2) %></div>
+    </p>
+  <% end %>
+</li>

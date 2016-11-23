@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => "/cable"
+
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   # The priority is based upon order of creation: first created -> highest priority.
@@ -6,11 +8,6 @@ Rails.application.routes.draw do
   # root "static_pages#home"
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root "static_pages#home"
-  get "static_pages/help"
-  get "static_pages/about"
-
-
   namespace :admin do
     root "dashboard#index"
     resources :categories
@@ -18,6 +15,9 @@ Rails.application.routes.draw do
     resources :requests, except: [:create, :new, :edit]
     resources :users
   end
+  root "static_pages#home"
+  get "static_pages/help"
+  get "static_pages/about"
 
   resources :users do
     member do
@@ -31,9 +31,11 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index, :new, :create, :destroy]
   resources :users, only: [:index, :edit, :update]
   resources :requests, except: [:edit, :update]
-  resources :reviews, except: [:show, :new, :index]
+  resources :reviews, except: [:new, :index]
   resources :relationships, only: [:create, :destroy]
   resources :comments, only: [:create , :destroy, :edit, :update]
   resources :activities, only: [:index, :create]
   resources :likes, only: [:create, :destroy]
+  resources :notifications, only: :index
+  patch "update_notifications" => "notifications#update"
 end

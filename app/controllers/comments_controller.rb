@@ -5,8 +5,9 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build comment_params
     @review = @comment.review
     if @comment.save
+      key = Notification.keys[:comment]
+      NotificationBroadCastJob.perform_now @review, key, current_user.id
       respond_to do |format|
-        format.html { redirect_to root_url }
         format.js
       end
     end

@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :review_votes, dependent: :destroy
+  has_many :notifications
 
   class << self
     def find_for_google_oauth2 access_token, signed_in_resource = nil

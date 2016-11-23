@@ -28,6 +28,30 @@
               <% end %>
             </li>
             <li><%= link_to t(:book), books_path %></li>
+            <li class="dropdown messages-menu">
+              <%= link_to update_notifications_path, class: "dropdown-toggle",
+                data: {toggle:"dropdown"}, method: :patch, remote: true do %>
+                <i class="fa fa-bell-o"></i>
+                <span class="label label-danger dropdown-label number-notification"><%= not_seen_notification %></span>
+              <% end %>
+              <ul class="dropdown-menu">
+                <li class="header">
+                  <%= "Notifications" %></li>
+                <li>
+                  <div id="slimScrollDiv">
+                    <ul class="menu">
+                      <% current_user.notifications.order(created_at: :desc).limit(10).each do |user_notification| %>
+                        <%= render "shared/notification",
+                          notification: user_notification %>
+                      <% end %>
+                    </ul>
+                  </div>
+                </li>
+                <li class="footer">
+                  <%= link_to "View All", notifications_path %>
+                </li>
+              </ul>
+            </li>
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <%= image_tag current_user.avatar.url, class: "user-image" %>

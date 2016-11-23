@@ -15,18 +15,6 @@ class Book < ActiveRecord::Base
   validates :number_page, presence: true
   paginates_per 4
 
-  scope :mark_book, -> (book,current_user) do
-    if current_user.nil? == false
-      joins(:marks).where(:marks, {user_id: current_user.id, book_id: book.id})
-    end
-  end
-
-  scope :mark_favorite, -> (book, current_user) do
-    if current_user.id.nil? == false
-      joins(:favorites).where(:favorites, {user_id: current_user.id, book_id: book.id})
-    end
-  end
-
   scope :best_book, -> do
     order("rate_avg DESC").limit(3)
   end

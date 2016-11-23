@@ -1,9 +1,9 @@
 <article class="mini-post">
   <header>
-    <h4><%= link_to book.title, book_path(book) %></h4>
+    <h4><%= link_to book.title, book %></h4>
     <time class="published" datetime="2015-10-20">By <a><%= book.author %></a></time>
     <p>
-      <span class="average-review-rating" data-score="<%= book.rate_avg.round(2) %>"></span>
+      <span class="average-review-rating" data-score="<%= book.rate_avg %>"></span>
     </p>
   </header>
   <%= link_to image_tag(book.picture, size: Settings.books.size), book, class: "image" %>

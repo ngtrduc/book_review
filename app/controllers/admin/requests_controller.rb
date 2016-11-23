@@ -13,10 +13,13 @@ class Admin::RequestsController < Admin::BaseController
     @request = Request.find params[:id]
     if @request.update_attributes status: params[:status]
       if @request.accepted?
+        key = Notification.keys[:accept]
         flash[:info] = t "admin.request_mailer.success"
       else
+        key = Notification.keys[:reject]
         flash[:info] = "User's request is denied."
       end
+      NotificationBroadCastJob.perform_now @request, key, current_user.id
     else
       flash[:warning] = t "admin.request_mailer.fail"
     end

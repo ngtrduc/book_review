@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'de125ff93addfb498a7d35053787c866c4d02bfa5595e510c1b36056f28cc59f7333a7cf94f3fc552bbfbb8014c9fa0e014ab49b40b9e84a025a483bad3fbd04'
+  # config.secret_key = '4241f63e045d12c57690c159403fd44361979156825c6df71096f0a41fae92cfc0b22107e0385f842946e020f8ecc8fe68ccd58332a3089513a09752de41a5b5'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -90,6 +90,12 @@ Devise.setup do |config|
   # from the server. You can disable this option at your own risk.
   # config.clean_up_csrf_token_on_authentication = true
 
+  # When false, Devise will not attempt to reload routes on eager load.
+  # This can reduce the time taken to boot the app but if your application
+  # requires the Devise mappings to be loaded during boot time the application
+  # won't boot properly.
+  # config.reload_routes = true
+
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 11. If
   # using other algorithms, it sets how many times you want the password to be hashed.
@@ -102,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = 'e117a63986bdafd269f0a1332cc3b0e74d8f140cd5db685401cea4dc4fc76d0bfe97873f4c03b0492267750912893d4802592ad3d9089eeb5a6587b789ad9aee'
+  # config.pepper = 'ab50bb260198226e026d462edd28fb81ea0deaa7837c9aeb86dadec761d58e968c17c10dd29d7e0f337104a962a059b40082cfd55f025a35d2c8ef0bb4e0dfb3'
 
   # Send a notification email when the user's password is changed
   # config.send_password_change_notification = false
@@ -214,7 +220,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  config.scoped_views = true
+  # config.scoped_views = false
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
@@ -242,10 +248,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  require "omniauth-google-oauth2"
-  config.omniauth :google_oauth2,
-    ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
-  config.omniauth :facebook, "1098247140246424", "0c6f2f3bdadac56a6effd36370c10d98"
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
