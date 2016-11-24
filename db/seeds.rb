@@ -198,7 +198,7 @@ end
 for user_id in 2..10
   i = rand 10..15
   1.upto(i) do |book_id|
-    content = Faker::Hipster.sentence
+    content = Faker::Hipster.paragraph(4,false,4)
     rating = rand 1..5
     Review.create! book_id: book_id,
       user_id: user_id,

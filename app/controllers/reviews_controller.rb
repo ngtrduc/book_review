@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
-  load_and_authorize_resource except: :show
+  load_and_authorize_resource
+
+  def show
+    @user = @review.user
+  end
 
   def create
     @new_review = current_user.reviews.build review_params

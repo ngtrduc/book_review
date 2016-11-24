@@ -82,4 +82,5 @@ $(document).on('page:load', keepStateNavUser);
 
 $(document).on("turbolinks:load", function() {
     $("#slimScrollDiv").slimScroll();
+    $(".favoriteSlimscroll").slimScroll();
 });

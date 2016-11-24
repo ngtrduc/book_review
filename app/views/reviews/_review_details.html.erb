@@ -1,0 +1,65 @@
+<div class="col-md-12 paper">
+  <% if can? :update, review %>
+    <span class="right-conner">
+      <%= link_to "", edit_review_path(review),
+        class: "glyphicon glyphicon-edit" %>
+      <%= link_to "", review_path(review), method: :delete,
+        data: {confirm: t("reviews.confirm")}, class: "glyphicon glyphicon-remove" %>
+    </span>
+  <% end %>
+  <div id="sub_review">
+    <h4 class="display_inline">
+      <span><%= link_to image_tag(review.book.picture, size: Settings.users.size),
+        review.book, class: "book-image" %></span>
+      <%= link_to review.book.title, review.book %>
+    </h4>
+
+    <div class="review-rating" data-score="<%= review.rating %>"></div>
+    <h4>Review's Content:</h4>
+    <p style="white-space: pre-wrap;"><%= review.content %></p>
+    <p class="text-left display_inline timestamp">
+      <em>
+        <%= "Posted by" %>
+        <%= link_to review.user.name, review.user %>
+        <%= time_ago_in_words(review.created_at) %>
+        <%= "ago."%>
+      </em>
+    </p>
+
+    <p>
+      <% if current_user %>
+        <% unless current_user.voted?(review.id) %>
+          <span id="vote-contain-<%= review.id %>"><%= "Is this review helpful, vote here! " %></span>
+          <%= link_to user_review_votes_path(current_user,
+            review_vote: {review_id: review.id}), class: "btn btn-custom",
+            id: "vote-link-#{review.id}",data: { disable_with: "..." }, method: :post, remote: :true do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+          <% end %>
+        <% else %>
+          <span class="btn btn-success "><%= "Voted" %></span>
+        <% end %>
+      <% end %>
+    </p>
+    <p>
+      <span id="vote-<%= review.id %>">
+        <%= review.vote_count %>
+      </span>
+      <span>
+        <i class="glyphicon glyphicon-thumbs-up" ></i>
+      </span>
+    </p>
+    <p>
+      <ul id="comments_<%= review.id %>" class="list-comment">
+        <% comments = review.comments.order(created_at: :asc) %>
+        <% if comments.any? %>
+          <%= render comments %>
+        <% end %>
+      </ul>
+      <% if user_signed_in?%>
+        <%= render "comments/comment_form",
+          comment: Comment.new, review: review %>
+      <% end %>
+    </p>
+  </br>
+  </div>
+</div>

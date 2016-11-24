@@ -1,0 +1,36 @@
+<div class="container-fluid well boxshadow">
+  <div class="row">
+    <hr>
+    <ul class="breadcrumb">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "All users", users_path %></li>
+      <li class="active"><%= @user.name %></li>
+    </ul>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="col-md-6">
+        <h1>
+          <%= link_to image_tag(@user.avatar,
+            size: Settings.users.size_ava, class: "book-image"), @user %>
+        </h1>
+        <%= render "shared/stats" %>
+        <p></p>
+      </div>
+      <div class="col-md-6 avatar">
+        <h2><%= @user.name %></h2>
+        <%= @user.email %><br>
+      </div>
+      <div class="col-md-8">
+        <% unless current_user == @user %>
+          <%= render "users/follow_form" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <%= render "review_details", review: @review %>
+    </div>
+  </div>
+</div>

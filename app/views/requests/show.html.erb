@@ -15,6 +15,9 @@
       <span><%= link_to "", requests_path,
         class: "glyphicon glyphicon-circle-arrow-left" %></span>
     </div>
+    <div class="col-md-2">
+      <span class="btn <%= request_status @request.status %>"><%= @request.status %></span>
+    </div>
   </div>
 </div>
 

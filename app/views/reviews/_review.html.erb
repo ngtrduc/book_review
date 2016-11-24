@@ -15,7 +15,7 @@
     </h4>
 
     <div class="review-rating" data-score="<%= review.rating %>"></div>
-    <h4>Review's Content:</h4>
+    <h4><%= link_to "Review's Content", review %></h4>
     <p style="white-space: pre-wrap;"><%= review.content %></p>
     <p class="text-left display_inline timestamp">
       <em>
@@ -32,7 +32,7 @@
           <span id="vote-contain-<%= review.id %>"><%= "Is this review helpful, vote here! " %></span>
           <%= link_to user_review_votes_path(current_user,
             review_vote: {review_id: review.id}), class: "btn btn-custom",
-            id: "vote-link-#{review.id}", method: :post, remote: :true do %>
+            id: "vote-link-#{review.id}",data: { disable_with: "..." }, method: :post, remote: :true do %>
             <i class="glyphicon glyphicon-thumbs-up"></i>
           <% end %>
         <% else %>
@@ -42,7 +42,7 @@
     </p>
     <p>
       <span id="vote-<%= review.id %>">
-        <%= review.review_votes.size %>
+        <%= review.vote_count %>
       </span>
       <span>
         <i class="glyphicon glyphicon-thumbs-up" ></i>
@@ -50,8 +50,12 @@
     </p>
     <p>
       <ul id="comments_<%= review.id %>" class="list-comment">
-        <% if review.comments.any? %>
-          <%= render review.comments %>
+        <% comments = review.comments.order(created_at: :asc).limit(4) %>
+        <% if comments.any? %>
+          <% if comments.size == 4 %>
+            <h4><%= link_to "See all comment", review %></h4>
+          <% end %>
+          <%= render comments %>
         <% end %>
       </ul>
       <% if user_signed_in?%>
