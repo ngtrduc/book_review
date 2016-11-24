@@ -15,4 +15,14 @@ module ApplicationHelper
     end
     "disable-input" if check == 1
   end
+
+  def request_status status
+    if status == "waitting"
+      "btn-primary"
+    elsif status == "accepted"
+      "btn-success"
+    else
+      "btn-danger"
+    end
+  end
 end

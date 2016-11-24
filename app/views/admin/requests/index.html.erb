@@ -25,9 +25,9 @@
             class: "glyphicon glyphicon-log-in" %>
           <% if request.waitting? %>
             <%= link_to "", admin_request_path(request, status: "accepted"), method: :put,
-              class: "glyphicon glyphicon-ok" %>
+              class: "glyphicon glyphicon-ok", data: { disable_with: "..." } %>
             <%= link_to "", admin_request_path(request, status: "denied"), method: :put,
-              class: "glyphicon glyphicon-minus-sign" %>
+              class: "glyphicon glyphicon-minus-sign", data: { disable_with: "..." } %>
           <% end %>
           <%= link_to "", admin_request_path(request[:id]),
             method: :delete, data: {confirm: t("admin.messages.confirm")},

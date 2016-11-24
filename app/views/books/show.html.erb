@@ -5,9 +5,8 @@
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "All books", books_path %></li>
       <li>
-        <a href="http://localhost:3000/books?utf8=%E2%9C%93&q%5Bcategory_id_eq%5D=<%= @book.category.id %>">
-          <%= @book.category.name %>
-        </a>
+        <%= link_to @book.category.name,
+          books_path(q: {category_id_eq: @book.category.id}) %>
       </li>
       <li class="active"><%= @book.title %></li>
     </ul>
