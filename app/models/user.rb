@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :review_votes, dependent: :destroy
   has_many :notifications
+  scope :created_between, ->start_date, end_date{where("DATE(created_at) >=
+    ? AND DATE(created_at) <= ?", start_date, end_date)}
 
   class << self
     def find_for_google_oauth2 access_token, signed_in_resource = nil

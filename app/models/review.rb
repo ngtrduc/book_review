@@ -11,6 +11,8 @@ class Review < ActiveRecord::Base
 
   validates :content, presence: true
 
+  scope :created_between, ->start_date, end_date{where("DATE(created_at) >=
+    ? AND DATE(created_at) <= ?", start_date, end_date)}
   scope :order_reviews, ->{order created_at: :DESC}
   scope :random_reviews, ->{order("RANDOM()").limit 5}
   scope :top_review, -> do

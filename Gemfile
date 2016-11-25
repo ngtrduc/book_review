@@ -30,6 +30,7 @@ gem "public_activity"
 gem "social-share-button"
 gem "momentjs-rails"
 gem "font-awesome-sass"
+gem "highcharts-rails"
 gem "datetimepicker-rails", github: "zpaulovics/datetimepicker-rails",
   branch: "master", submodules: true
 source "https://rails-assets.org/" do
