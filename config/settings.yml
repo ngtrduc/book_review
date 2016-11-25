@@ -48,3 +48,4 @@ activity:
     relationship:
       content: "has relationship"
 image_size_40: "40x40"
+number_day_of_chart: 10

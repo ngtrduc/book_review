@@ -20,6 +20,9 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require highcharts
+//= require highcharts/highcharts-more
+
 var dataTab = function() {
   $('#data_table').DataTable();
 }
@@ -49,3 +52,48 @@ function image_preview() {
 }
 $(document).ready(image_preview);
 $(document).on('page:load', image_preview);
+
+$(document).ready(function() {
+  var data_chart = $('#new-review-chart').data('chart');
+  $('#new-review-chart').highcharts({
+    chart: {
+      type: 'column'
+    },
+    title: {
+      text: "New Review count per day"
+    },
+    xAxis: {
+      type: 'category'
+    },
+    yAxis: {
+      allowDecimals: false,
+      min: 0,
+      title: {
+        text: "New Reviews'count"
+      }
+    },
+    legend: {
+      enabled: false
+    },
+    credits: {
+      enabled: false
+    },
+    tooltip: {
+      pointFormat: "Number of reviews"
+    },
+    series: [{
+      data: data_chart,
+      dataLabels: {
+        enabled: true,
+        color: '#FFFFFF',
+        align: 'center',
+        format: '{point.y:.1f}',
+        y: 5,
+        style: {
+          fontSize: '16px',
+          fontFamily: 'Verdana, sans-serif'
+        }
+      }
+    }]
+  });
+});
