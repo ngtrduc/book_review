@@ -10,10 +10,10 @@
           <%= link_to "WebBookReview", root_path, class: "navbar-brand bold"%>
       </div>
       <div class="navbar-header">
-          <%= search_form_for @q, url: books_path do |f| %>
+          <%= search_form_for @q, url: books_path, html: {id: "search-bar"} do |f| %>
             <span class ="glyphicon glyphicon-search search-icon"></span>
             <%= f.text_field :title_or_author_cont,
-              placeholder: "Search book's tittle or author ...", id: "search-box" %>
+              placeholder: "Search book's tittle or author ...", id: "search-box", class: "typeahead" %>
             <%= f.submit "Search", class: "hide" %>
           <% end %>
       </div>
