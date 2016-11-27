@@ -27,10 +27,12 @@ gem "ransack"
 gem "whenever", require: false
 gem "sdoc",         "0.4.0", group: :doc
 gem "public_activity"
+gem 'twitter-typeahead-rails'
 gem "social-share-button"
 gem "momentjs-rails"
 gem "font-awesome-sass"
 gem "highcharts-rails"
+gem 'handlebars_assets'
 gem "datetimepicker-rails", github: "zpaulovics/datetimepicker-rails",
   branch: "master", submodules: true
 source "https://rails-assets.org/" do

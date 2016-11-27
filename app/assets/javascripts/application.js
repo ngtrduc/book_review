@@ -23,6 +23,8 @@
 //= require ratyrate
 //= require skel.min
 //= require notify
+//= require twitter/typeahead
+//= require handlebars
 
 var make_select_box = function(){
   $('.select-category').niceSelect();
@@ -84,3 +86,44 @@ $(document).on("turbolinks:load", function() {
     $("#slimScrollDiv").slimScroll();
     $(".favoriteSlimscroll").slimScroll();
 });
+
+function tudong (){
+  var searchs = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '/static_pages/getDataSearch'
+  });
+
+  searchs.initialize();
+
+  var searchAuthor = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('author'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '/static_pages/getDataSearchwithAuthor'
+  });
+
+  searchAuthor.initialize();
+
+  $('#search-bar .typeahead').typeahead({},
+  {
+    name: 'books',
+    display: 'title',
+    source: searchs.ttAdapter(),
+    templates: {
+      header: '<span class="search-by">By title</span><hr style="margin: 20px">',
+      suggestion: Handlebars.compile('<div class="tt-suggestion tt-selectable"><a href="/books/{{id}}">{{title}}</a></p>')
+    }
+  },
+  {
+    name: 'book-author',
+    display: 'author',
+    source: searchAuthor.ttAdapter(),
+    templates: {
+      header: '<span class="search-by">By author</span><hr style="margin: 20px">',
+      suggestion: Handlebars.compile('<div class="tt-suggestion tt-selectable"><a href="/books/{{id}}">{{author}}</a></p>')
+    }
+  });
+}
+
+$(document).ready(tudong);
+$(document).on('page:load', tudong);

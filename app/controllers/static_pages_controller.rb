@@ -14,4 +14,14 @@ class StaticPagesController < ApplicationController
 
   def search
   end
+
+  def getDataSearch
+    @books_for_search = Book.all.as_json(only: [:title, :id, :picture])
+    render json: @books_for_search
+  end
+
+  def getDataSearchwithAuthor
+    @books_search_with_author = Book.all.as_json(only: [:author, :id])
+    render json: @books_search_with_author
+  end
 end
