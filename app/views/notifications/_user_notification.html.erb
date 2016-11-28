@@ -2,8 +2,7 @@
   <td>
     <%= link_to notification_link notification do %>
       <div class="pull-left">
-        <%= set_image notification.trackable,
-          Settings.image_size_40 %>&nbsp;&nbsp;
+        <%= notification_image notification %>&nbsp;&nbsp;
       </div>
       <div>
         <div><%= notification_content notification %></div>

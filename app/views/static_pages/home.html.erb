@@ -18,6 +18,8 @@
     </section>
 
     <section class="list-mini-posts">
+      <h2>Random Books</h2>
+      <hr>
       <div class="mini-posts">
         <% @mini_books.each do |book| %>
           <%= render "books/mini_book", book: book %>
@@ -27,6 +29,7 @@
 
     <section>
       <ul class="posts">
+        <li><h2>Lastest Reviews</h2></li>
         <% @reviews.each do |review| %>
           <%= render "reviews/review_home", review: review %>
         <% end %>
