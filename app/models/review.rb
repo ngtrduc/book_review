@@ -14,7 +14,7 @@ class Review < ActiveRecord::Base
   scope :created_between, ->start_date, end_date{where("DATE(created_at) >=
     ? AND DATE(created_at) <= ?", start_date, end_date)}
   scope :order_reviews, ->{order created_at: :DESC}
-  scope :random_reviews, ->{order("RANDOM()").limit 5}
+  scope :last_reviews, ->{order(created_at: :desc).limit 5}
   scope :top_review, -> do
     order "vote_count DESC"
   end

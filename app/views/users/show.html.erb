@@ -23,7 +23,7 @@
       </div>
       <div class="col-md-8">
         <% unless current_user == @user %>
-          <%= render "follow_form" %>
+          <%= render "follow_form", user: @user %>
         <% end %>
       </div>
     </div>

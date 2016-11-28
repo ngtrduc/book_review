@@ -13,17 +13,19 @@
     <div class="col-md-6 col-md-offset-3">
       <table class="table table-striped">
         <tr>
+          <th><%= t "users.avatar" %></th>
           <th><%= t "users.name" %></th>
           <th><%= t "admin.users.table.email" %></th>
-          <th><%= t "users.avatar" %></th>
+          <th>Action</th>
         </tr>
         <% @users.each do |user| %>
           <tr>
-            <td><%= link_to user.name, user %></td>
-            <td><%= user.email%></td>
             <td>
               <%= link_to image_tag(user.avatar, size: Settings.users.size), user %>
             </td>
+            <td><%= link_to user.name, user %></td>
+            <td><%= user.email%></td>
+            <td><%= render "follow_form", user: user %></td>
           </tr>
         <% end %>
       </table>

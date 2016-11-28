@@ -4,7 +4,4 @@
     <%= get_activity_trackable_content activity %>
     <em><%= time_ago_in_words activity.created_at %></em>
   </div>
-  <%= div_for(activity) do %>
-    <%= render "users/like", activity: activity %>
-  <% end %>
 </div>

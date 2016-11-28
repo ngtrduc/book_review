@@ -1,12 +1,12 @@
 <li>
   <article>
     <header>
-      <span><i><%= review.content %></i></span>
+      <span><i><%= link_to review.content.truncate(70), review %></i></span>
       <br/>
       <span class="name">In <%= link_to review.book.title, review.book %></span>
       <time class="published" datetime="2015-10-20">
         Posted <%= time_ago_in_words(review.created_at) %> ago.</time>
     </header>
-    <%= link_to image_tag(review.user.avatar), review.user, class: "image" %>
+    <%= link_to image_tag(review.user.avatar, size: "60x60"), review.user, class: "book-image" %>
   </article>
 </li>
