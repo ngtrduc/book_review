@@ -27,7 +27,7 @@
     </p>
 
     <p>
-      <% if current_user %>
+      <% if current_user && current_user != review.user %>
         <% unless current_user.voted?(review.id) %>
           <span id="vote-contain-<%= review.id %>"><%= "Is this review helpful, vote here! " %></span>
           <%= link_to user_review_votes_path(current_user,
@@ -50,7 +50,7 @@
     </p>
     <p>
       <ul id="comments_<%= review.id %>" class="list-comment">
-        <% comments = review.comments.order(created_at: :asc).limit(4) %>
+        <% comments = review.comments.order(created_at: :desc).limit(4).reverse %>
         <% if comments.any? %>
           <% if comments.size == 4 %>
             <h4><%= link_to "See all comment", review %></h4>

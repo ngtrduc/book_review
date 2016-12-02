@@ -104,7 +104,7 @@ function user_chart() {
       type: 'column'
     },
     title: {
-      text: "New User's count per day"
+      text: "New registrations per day"
     },
     xAxis: {
       type: 'category'
@@ -142,5 +142,5 @@ function user_chart() {
   });
 };
 
-$(document).ready(request_chart);
-$(document).on('page:load', request_chart);
+$(document).ready(user_chart);
+$(document).on('page:load', user_chart);

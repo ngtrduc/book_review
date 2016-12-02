@@ -2,9 +2,15 @@
   <div id="list_reading_book">
     <% @reading_books.each do |reading_book| %>
       <li class="list-group-item list-group-item-info">
-        <%= link_to image_tag(reading_book.picture, size: Settings.favorites.size,
-          class: "book-image"), reading_book %>
-        <%= link_to reading_book.title, reading_book %>
+        <div class="row">
+          <div class="col-md-2">
+            <%= link_to image_tag(reading_book.picture, size: Settings.favorites.size,
+              class: "book-image"), reading_book %>
+          </div>
+          <div class="col-md-8">
+            <%= link_to reading_book.title, reading_book %>
+          </div>
+        </div>
         <br/>
       </li>
     <% end %>

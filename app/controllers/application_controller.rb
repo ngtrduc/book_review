@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :search_param
+  before_action :load_param_for_header
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
 
@@ -22,7 +22,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def search_param
+  def load_param_for_header
     @q = Book.ransack params[:q]
+    @notifications = current_user.notifications.includes(:target, :owner)
+      .order(created_at: :desc).limit(10)
   end
 end

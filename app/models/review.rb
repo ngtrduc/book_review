@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   include PublicActivity::Model
-  tracked owner: -> (controller, model){controller && controller.current_user}
+  tracked owner: -> (controller, model){controller && controller.current_user},
+    recipient: :book
 
   belongs_to :user
   belongs_to :book

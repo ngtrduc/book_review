@@ -15,7 +15,7 @@ class Admin::DashboardController < Admin::BaseController
   def load_chart_data
     @start_date = Date.today - Settings.number_day_of_chart
     @end_date = Date.today
-    #load_user_new_in_day
+    load_user_new_in_day
     load_review_new_in_day
     load_request_new_in_day
   end

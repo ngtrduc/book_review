@@ -93,12 +93,14 @@ ActiveRecord::Schema.define(version: 20161122120826) do
   end
 
   create_table "notifications", force: :cascade do |t|
+    t.string   "target_type"
     t.integer  "target_id"
+    t.string   "owner_type"
     t.integer  "owner_id"
     t.integer  "key"
-    t.boolean  "seen",       default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "seen",        default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
@@ -160,6 +162,8 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true

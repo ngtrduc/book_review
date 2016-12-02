@@ -5,15 +5,8 @@ module ApplicationHelper
   end
 
   def disabled user_id, book_id
-    reviews = Review.where(book_id: book_id).includes(:user)
-    check = 0
-    reviews.each do |review|
-      if review.user.id == user_id
-        check = 1
-        break
-      end
-    end
-    "disable-input" if check == 1
+    review = Review.where "book_id = ? AND user_id = ?", book_id, user_id
+    "disable-input" unless review.empty?
   end
 
   def request_status status

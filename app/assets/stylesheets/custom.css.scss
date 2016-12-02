@@ -1,4 +1,4 @@
- @import "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "social-share-button";
 @import 'nice-select';
@@ -400,4 +400,8 @@ h4 .user {
 .notification-date {
   font-size: 10px !important;
   color: #999 !important;
+}
+
+.link-button {
+  text-decoration: none;
 }

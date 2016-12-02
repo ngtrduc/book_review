@@ -1,6 +1,7 @@
 class Mark < ActiveRecord::Base
   include PublicActivity::Model
-  tracked owner: -> (controller, model){controller && controller.current_user}
+  tracked owner: -> (controller, model){controller && controller.current_user},
+    recipient: :book
 
   enum status: [:reading, :read]
 

@@ -1,8 +1,8 @@
 class CreateNotifications < ActiveRecord::Migration
   def change
     create_table :notifications do |t|
-      t.integer :target_id
-      t.integer :owner_id
+      t.belongs_to :target, :polymorphic => true
+      t.belongs_to :owner, :polymorphic => true
       t.integer :key
       t.boolean :seen, default: false
       t.timestamps null: false

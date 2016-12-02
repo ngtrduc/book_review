@@ -1,7 +1,11 @@
 <div class = "user_activity">
   <div class="activity">
-    <b><%= activity.owner.name if activity.owner %></b>
+    <% if activity.owner %>
+      <%= link_to image_tag(activity.owner.avatar, class: "book-image", size: "40x40"), activity.owner %>
+      <b><%= (link_to activity.owner.name, activity.owner) %></b>
+    <% end %>
     <%= get_activity_trackable_content activity %>
+    <%= get_activity_trackable_link activity %>
     <em><%= time_ago_in_words activity.created_at %></em>
   </div>
 </div>

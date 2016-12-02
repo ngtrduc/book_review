@@ -40,9 +40,9 @@
                 <li>
                   <div id="slimScrollDiv">
                     <ul class="menu">
-                      <% current_user.notifications.order(created_at: :desc).limit(6).each do |user_notification| %>
+                      <% @notifications.each do |notification| %>
                         <%= render "shared/notification",
-                          notification: user_notification %>
+                          notification: notification %>
                       <% end %>
                     </ul>
                   </div>

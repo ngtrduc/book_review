@@ -87,7 +87,7 @@ $(document).on("turbolinks:load", function() {
     $(".favoriteSlimscroll").slimScroll();
 });
 
-function tudong (){
+function autoComplete (){
   var searchs = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -125,5 +125,5 @@ function tudong (){
   });
 }
 
-$(document).ready(tudong);
-$(document).on('page:load', tudong);
+$(document).ready(autoComplete);
+$(document).on('page:load', autoComplete);

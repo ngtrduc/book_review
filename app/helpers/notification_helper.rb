@@ -1,7 +1,7 @@
 module NotificationHelper
   def notification_content notification
     key = notification.key
-    owner = User.find notification.owner_id
+    owner = notification.owner
     case key
     when "accept"
       content = "Admin accept your request"
@@ -17,7 +17,7 @@ module NotificationHelper
   end
 
   def notification_image notification
-    owner = User.find notification.owner_id
+    owner = notification.owner
     image_tag owner.avatar, size: Settings.image_size_40, class: "img-circle"
   end
 
@@ -29,17 +29,10 @@ module NotificationHelper
 
   def notification_link notification
     key = notification.key
-    case key
-    when "accept"
-      Request.find notification.target_id
-    when "reject"
-      Request.find notification.target_id
-    when "comment"
-      Review.find notification.target_id
-    when "vote"
-      Review.find notification.target_id
-    when "follow"
-      User.find notification.owner_id
+    if key == "follow"
+      notification.owner
+    else
+      notification.target
     end
   end
 end

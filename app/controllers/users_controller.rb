@@ -13,8 +13,7 @@ class UsersController < ApplicationController
       .page(params[:page]).per Settings.favorites.page
     @reading_books = Book.where(id: Mark.reading(@user).pluck(:book_id))
       .page(params[:page]).per Settings.favorites.page
-    @activities = PublicActivity::Activity.order("created_at desc")
-      .where owner: @user
+    load_activities
     @top_reviews = @user.reviews.order("vote_count DESC").includes(:book)
       .page(params[:page]).per Settings.review.page
   end
@@ -32,4 +31,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit :name, :email, :password, :password_confirmation, :avatar
   end
+
+  def load_activities
+    following_ids = @user.following_ids.join(', ')
+    @activities = PublicActivity::Activity.order("created_at desc")
+      .where("owner_id IN (?) OR owner_id = ?", following_ids, @user.id).page(params[:page]).per Settings.activity.page
+  end
+
 end

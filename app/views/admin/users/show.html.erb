@@ -1,12 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2 col-sm-offset-1">
-      <%= image_tag @user.avatar, size: Settings.admin.users.size_ava, class: "book-image" %>
+      <%= image_tag @user.avatar, size: "120x120", class: "book-image" %>
     </div>
     <div class="col-sm-4">
-      <h3>Name: <%= @user.name %></h3>
+      <h3><%= @user.name %></h3>
       <p>email: <%= @user.email %> </p>
       <p>Review's count: <%= @user.reviews.size %></p>
+      <%= link_to "View profile", @user %>
       <br>
     </div>
   </div>

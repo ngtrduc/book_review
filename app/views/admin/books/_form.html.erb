@@ -41,7 +41,11 @@
       <br>
       <div class="form-group">
         <div class="upload-preview">
+          <% if @book.picture %>
+            <%= image_tag @book.picture, size: "150x150" %>
+          <% else %>
             <%= image_tag "book/dac-nhan-tam.jpg", size: "150x150" %>
+          <% end %>
         </div>
         <br>
         <br>

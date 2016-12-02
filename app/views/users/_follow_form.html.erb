@@ -1,6 +1,6 @@
 <%if user_signed_in?%>
   <% unless user.is_user? current_user %>
-    <div id="follow_form">
+    <div id="follow_form-<%= user.id %>">
       <% if current_user.following? user %>
         <%= form_for current_user.active_relationships
           .find_by(followed_id: user.id),
