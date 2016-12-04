@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   def load_param_for_header
     @q = Book.ransack params[:q]
-    if current_user
+    if current_user = env["warden"].user
       @notifications = current_user.notifications.includes(:target, :owner)
         .order(created_at: :desc).limit(10)
     end
