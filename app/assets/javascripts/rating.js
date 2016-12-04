@@ -20,6 +20,14 @@ $(document).on('ready page:load',function(){
     scoreName: 'review[rating]'
   });
 
+  $('#rating-form').raty({
+    path: '/assets/',
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    scoreName: 'review[rating]'
+  });
+
   $('.disable-input :input').prop('disabled', true);
   $('.disable-input #rating-form').raty({
     readOnly:true

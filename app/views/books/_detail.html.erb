@@ -10,12 +10,13 @@
     <div class="title">
       <h2><b><%= @book.title %></b></h2>
     </div>
-
+    <span class="name">By <a href="#"><%= @book.author %></a></span>
     <div class="description">
       <h3><span><%= t "books.description" %></span></h3>
-      <p><%= @book.description %></p>
-      <p class="published"> Number of page: <%= @book.number_page %></p>
     </div>
+      <p><%= @book.description %></p>
+      <p class="published"> Publish Date: <%= @book.publish_date %></p>
+      <p> Number of page: <%= @book.number_page %></p>
     <div id="form-btn-mark">
       <%= render "mark_button" %>
     </div>
