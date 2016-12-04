@@ -21,7 +21,6 @@
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li><%= link_to("Admin mode", admin_root_path) if current_user.admin? %></li>
-            <li><%= link_to t("static_pages.header.user"), users_path %></li>
             <li>
               <% unless current_user.admin? %>
                 <%= link_to t("static_pages.header.my_requests"), requests_path %>

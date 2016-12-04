@@ -20,7 +20,6 @@
     <p class="text-left display_inline timestamp">
       <em>
         <%= "Posted by" %>
-        <%= link_to review.user.name, review.user %>
         <%= time_ago_in_words(review.created_at) %>
         <%= "ago."%>
       </em>
