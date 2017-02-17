@@ -12,6 +12,7 @@ gem "redis", "~> 3.0"
 gem "sidekiq"
 gem "figaro"
 gem "devise"
+gem 'pg'
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
@@ -40,12 +41,14 @@ source "https://rails-assets.org/" do
 end
 
 group :development, :test do
-  gem "sqlite3",     "1.3.9"
   gem "byebug",      "3.4.0"
-  gem "web-console", "3.4.0"
+  gem "web-console",   "3.4.0"
   gem "spring",      "1.1.3"
+  gem "rspec-rails", "~> 3.5"
 end
 
 group :development do
   gem "letter_opener"
 end
+
+

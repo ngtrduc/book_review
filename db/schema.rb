@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20161122120826) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
     t.string   "trackable_type"
     t.integer  "trackable_id"
@@ -23,9 +26,9 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "recipient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type"
-    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
-    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
+    t.index ["owner_id", "owner_type"], name: "index_activities_on_owner_id_and_owner_type", using: :btree
+    t.index ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type", using: :btree
+    t.index ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type", using: :btree
   end
 
   create_table "books", force: :cascade do |t|
@@ -42,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "category_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.index ["category_id"], name: "index_books_on_category_id"
+    t.index ["category_id"], name: "index_books_on_category_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
@@ -58,8 +61,8 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_comments_on_review_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["review_id"], name: "index_comments_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -67,8 +70,8 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_favorites_on_book_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["book_id"], name: "index_favorites_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
 
   create_table "likes", force: :cascade do |t|
@@ -77,8 +80,8 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["activity_id"], name: "index_likes_on_activity_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["activity_id"], name: "index_likes_on_activity_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "marks", force: :cascade do |t|
@@ -88,8 +91,8 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_marks_on_book_id"
-    t.index ["user_id"], name: "index_marks_on_user_id"
+    t.index ["book_id"], name: "index_marks_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_marks_on_user_id", using: :btree
   end
 
   create_table "notifications", force: :cascade do |t|
@@ -102,7 +105,7 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "user_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -110,9 +113,9 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
   end
 
   create_table "requests", force: :cascade do |t|
@@ -121,7 +124,7 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "user_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_requests_on_user_id"
+    t.index ["user_id"], name: "index_requests_on_user_id", using: :btree
   end
 
   create_table "review_votes", force: :cascade do |t|
@@ -129,8 +132,8 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_review_votes_on_review_id"
-    t.index ["user_id"], name: "index_review_votes_on_user_id"
+    t.index ["review_id"], name: "index_review_votes_on_review_id", using: :btree
+    t.index ["user_id"], name: "index_review_votes_on_user_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -141,8 +144,8 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.integer  "book_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["book_id"], name: "index_reviews_on_book_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
+    t.index ["book_id"], name: "index_reviews_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -166,8 +169,23 @@ ActiveRecord::Schema.define(version: 20161122120826) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "books", "categories"
+  add_foreign_key "comments", "reviews"
+  add_foreign_key "comments", "users"
+  add_foreign_key "favorites", "books"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "likes", "activities"
+  add_foreign_key "likes", "users"
+  add_foreign_key "marks", "books"
+  add_foreign_key "marks", "users"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "requests", "users"
+  add_foreign_key "review_votes", "reviews"
+  add_foreign_key "review_votes", "users"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "users"
 end
